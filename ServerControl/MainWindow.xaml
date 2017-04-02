@@ -1,0 +1,76 @@
+﻿<Window x:Class="ServerControl.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ServerControl"
+        mc:Ignorable="d"
+        Title="Rito Manager" 
+        Style="{StaticResource CustomWindowStyle}" 
+        Width="850" Height="525" 
+        WindowStartupLocation="CenterScreen"
+        WindowState="Normal"
+        >
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome 
+            ResizeBorderThickness="6"
+            CaptionHeight="{Binding TitleHeight}"
+            CornerRadius="0"
+            GlassFrameThickness="0"
+            />
+    </WindowChrome.WindowChrome>
+
+    <Grid Name="grd">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Frame Name="placeholder" NavigationUIVisibility="Hidden"
+               Background="Transparent"
+               Content="{Binding CurrentPage, Converter={local:PageValueConverter}}"
+               Grid.RowSpan="{Binding IsLoggedIn, Converter={local:BooleanToRowSpanConverter}}"
+               Grid.Row="0"
+               />
+
+        <StackPanel Grid.Row="1" Visibility="{Binding IsLoggedIn, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}">
+            <!-- The buttons to change the view -->
+            <StackPanel Name="ButtonNavWrapper" Grid.Row="1" Orientation="Horizontal"
+                        Visibility="{Binding IsLoggedIn, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}"
+                        Background="{StaticResource AccentColor1}"
+                    >
+                <Button Style="{StaticResource ButtonPageNavStyle}" Content="User Management"
+                    Command="{Binding ShowUserManagement}"
+                    Width="200"
+                    />
+                <Button Style="{StaticResource ButtonPageNavStyle}" Content="Server Statistics"
+                    Command="{Binding ShowServerStats}"
+                    Width="180"
+                    />
+            </StackPanel>
+
+            <!-- The status bar -->
+            <StatusBar Grid.Row="1"
+                   Height="25"
+                   Visibility="{Binding IsLoggedIn, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}"
+                   Style="{StaticResource StatusBarStyle}"
+                   >
+                <!-- Status bar items-->
+                <StatusBarItem HorizontalAlignment="Stretch" Margin="5,0,0,0">
+                    <TextBlock Text="{Binding StatusBarText}"  Style="{StaticResource StatusBarTextblockStyle}"/>
+                </StatusBarItem>
+                <StatusBarItem>
+                    <Button Style="{StaticResource StatusbarButtonStyle}" Visibility="{Binding StatusBarButtonVisibility, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}" >
+                        <TextBlock Text="[Contact Admin]"/>
+                    </Button>
+                </StatusBarItem>
+                <StatusBarItem HorizontalAlignment="Right" Margin="0,0,5,0">
+                    <Button Content="Log Out" Style="{StaticResource StatusbarButtonStyle}" FontSize="14" Command="{Binding LogOutCommand}"/>
+                </StatusBarItem>
+
+            </StatusBar>
+        </StackPanel>
+        
+    </Grid>
+</Window>

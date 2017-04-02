@@ -1,0 +1,35 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ServerControl">
+
+    <SolidColorBrush x:Key="DarkBackground" Color="#6B7A8F"/>
+    <SolidColorBrush x:Key="AccentColor1" Color="#7F3F5A"/>
+    <SolidColorBrush x:Key="HighlightAccentColor1" Color="#a15072"/>
+    <SolidColorBrush x:Key="DarkAccentColor1" Color="#5d2e42"/>
+    <SolidColorBrush x:Key="AccentColor2" Color="#c59c27"/>
+    <SolidColorBrush x:Key="HighlightAccentColor2" Color="#F7C331"/>
+    <SolidColorBrush x:Key="DarkAccentColor2" Color="#94751d"/>
+    <SolidColorBrush x:Key="AccentColor3" Color="#F2F2F2"/>
+    <SolidColorBrush x:Key="HighlightAccentColor3" Color="#fefefe"/>
+    <SolidColorBrush x:Key="DarkAccentColor3" Color="#e5e5e5"/>
+
+    <SolidColorBrush x:Key="LightFontColor" Color="#ebebeb"/>
+    <SolidColorBrush x:Key="DarkFontColor" Color="#141823"/>
+    <SolidColorBrush x:Key="RedAccentFontColor" Color="#7F3F5A"/>
+
+    <Color x:Key="BackgroundLight">#efefef</Color>
+    <SolidColorBrush x:Key="BackgroundLightBrush" Color="{StaticResource BackgroundLight}"/>
+
+    <Color x:Key="BackgroundVeryLight">#fafafa</Color>
+    <SolidColorBrush x:Key="BackgroundVeryLightBrush" Color="{StaticResource BackgroundVeryLight}"/>
+
+    <Color x:Key="ForegroundMain">#686868</Color>
+    <SolidColorBrush x:Key="ForegroundMainBrush" Color="{StaticResource ForegroundMain}"/>
+
+    <Color x:Key="ForegroundVeryDark">#000000</Color>
+    <SolidColorBrush x:Key="ForegroundVeryDarkBrush" Color="{StaticResource ForegroundVeryDark}"/>
+
+    <Color x:Key="ForegroundLight">#ffffff</Color>
+    <SolidColorBrush x:Key="ForegroundLightBrush" Color="{StaticResource ForegroundLight}"/>
+
+</ResourceDictionary>

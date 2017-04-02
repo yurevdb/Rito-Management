@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerControl", "ServerControl\ServerControl.csproj", "{DA42F763-D00D-467F-B1D6-FB636BCFFAA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransmissionControl", "DataSender\TransmissionControl.csproj", "{AF610862-07E1-4641-BFA5-340CEBAD7A41}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Rito_Manager_Installer", "Rito_Manager_Installer\Rito_Manager_Installer.vdproj", "{4A6E45EB-1BAB-4B5C-9240-294032F21710}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA42F763-D00D-467F-B1D6-FB636BCFFAA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA42F763-D00D-467F-B1D6-FB636BCFFAA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA42F763-D00D-467F-B1D6-FB636BCFFAA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA42F763-D00D-467F-B1D6-FB636BCFFAA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF610862-07E1-4641-BFA5-340CEBAD7A41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF610862-07E1-4641-BFA5-340CEBAD7A41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF610862-07E1-4641-BFA5-340CEBAD7A41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF610862-07E1-4641-BFA5-340CEBAD7A41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A6E45EB-1BAB-4B5C-9240-294032F21710}.Debug|Any CPU.ActiveCfg = Debug
+		{4A6E45EB-1BAB-4B5C-9240-294032F21710}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

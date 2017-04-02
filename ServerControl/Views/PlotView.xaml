@@ -1,0 +1,24 @@
+﻿<local:BasePage x:TypeArguments="local:PlotViewModel"
+                x:Class="ServerControl.PlotView"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                xmlns:local="clr-namespace:ServerControl"
+                xmlns:oxy="http://oxyplot.org/wpf"
+                mc:Ignorable="d" 
+                d:DesignHeight="300" d:DesignWidth="300"
+                Title="PlotView">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+
+        <oxy:PlotView Model="{Binding CpuPlot}" Foreground="Black" Margin="5" Grid.Row="0"/>
+        <oxy:PlotView Model="{Binding RamPlot}" Foreground="Black" Margin="5" Grid.Row="1"/>
+        <oxy:PlotView Model="{Binding NetPlot}" Foreground="Black" Margin="5" Grid.Row="2"/>
+    </Grid>
+</local:BasePage>
