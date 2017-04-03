@@ -37,14 +37,16 @@
         </Grid.Background>
         
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <!-- Login Bar -->
         <Border Grid.Column="2"
+                Grid.ColumnSpan="2"
                 Height="{Binding ActualHeight, ElementName=grd}"
                 HorizontalAlignment="Left"
                 Background="{StaticResource DarkAccentColor3}"
@@ -76,7 +78,7 @@
                            />
                         <!-- Username -->
                         <TextBox x:Name="tbxUserName"
-                                 MaxWidth="180"
+                                 MaxWidth="183"
                                  Text="{Binding ViewModel.Username, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:LoginPage}}}" 
                                  Tag="Username"
                                  Style="{StaticResource LoginTextBox}"
@@ -86,7 +88,7 @@
                         <!-- Password -->
                         <PasswordBox x:Name="tbxPassword"
                                      Tag="Password"
-                                     MaxWidth="180"
+                                     MaxWidth="183"
                                      Style="{StaticResource LoginPasswordBox}"
                                      Background="{StaticResource DarkAccentColor3}"
                                      />

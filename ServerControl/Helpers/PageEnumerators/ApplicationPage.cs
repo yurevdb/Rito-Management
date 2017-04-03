@@ -25,5 +25,9 @@
         /// The page to list the users
         /// </summary>
         UserInfo = 5,
+        /// <summary>
+        /// The welcome page
+        /// </summary>
+        Welcome = 6,
     }
 }

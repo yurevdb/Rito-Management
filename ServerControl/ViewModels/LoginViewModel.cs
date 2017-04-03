@@ -74,7 +74,7 @@ namespace ServerControl
                 if(this.Username == "yure" && (parameter as IHavePassword).SecurePassword.Unsecure() == "hallo")
                 {
                     
-                    WindowViewModelHelper.SetViewFromViewModel(ApplicationPage.UserManagement);
+                    WindowViewModelHelper.SetViewFromViewModel(ApplicationPage.Welcome);
                     WindowViewModelHelper.SetLoggedIn(true);
                 }
             });

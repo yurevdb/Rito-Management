@@ -49,6 +49,8 @@ namespace ServerControl
                     return new CreateUserPage();
                 case ApplicationPage.UserInfo:
                     return new DisplayUsersPage();
+                case ApplicationPage.Welcome:
+                    return new WelcomePage();
                 default:
                     Debugger.Break();
                     return null;
