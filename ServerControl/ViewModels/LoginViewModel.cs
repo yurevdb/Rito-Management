@@ -26,6 +26,11 @@ namespace ServerControl
         public string Username { get; set; }
 
         /// <summary>
+        /// Error text to show when the username and or password is wrong
+        /// </summary>
+        public string ErrorText { get; set; }
+
+        /// <summary>
         /// A flag indicating if the login command is running
         /// </summary>
         public bool LoginIsRunning { get; set; } = false;
@@ -76,6 +81,11 @@ namespace ServerControl
                     
                     WindowViewModelHelper.SetViewFromViewModel(ApplicationPage.Welcome);
                     WindowViewModelHelper.SetLoggedIn(true);
+                    ErrorText = string.Empty;
+                }
+                else
+                {
+                    ErrorText = Status.LoginError;
                 }
             });
         }

@@ -10,5 +10,6 @@
         public static string Failed => "Failed";
         public static string HostNotOnline => "Host is currently not online. Please wait a moment or contact the administrator.";
         public static string AuthenticationFailed => "The authentication has failed.";
+        public static string LoginError => "The username and or the password entered was wrong.\nPlease try again.";
     }
 }

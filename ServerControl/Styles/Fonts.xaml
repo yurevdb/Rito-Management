@@ -24,5 +24,6 @@
 
     <system:Double x:Key="FontSizeLarge">36</system:Double>
     <system:Double x:Key="FontSizeRegular">22</system:Double>
+    <system:Double x:Key="FontSizeAverage">16</system:Double>
     <system:Double x:Key="FontSizeSmall">8</system:Double>
 </ResourceDictionary>

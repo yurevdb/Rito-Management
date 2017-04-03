@@ -62,11 +62,12 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Viewbox>
-                    <StackPanel Grid.Row="0" 
-                            Margin="50 50 0 0"
-                            VerticalAlignment="Bottom"
-                            >
+                <Viewbox Grid.Row="0" MaxWidth="330" MinWidth="330">
+                    <StackPanel Margin="50 50 0 0"
+                                VerticalAlignment="Bottom"
+                                MinWidth="215"
+                                MaxWidth="215"
+                                >
 
                         <TextBlock Margin="0 0 20 0"
                            Text="Sign In" 
@@ -78,7 +79,6 @@
                            />
                         <!-- Username -->
                         <TextBox x:Name="tbxUserName"
-                                 MaxWidth="183"
                                  Text="{Binding ViewModel.Username, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:LoginPage}}}" 
                                  Tag="Username"
                                  Style="{StaticResource LoginTextBox}"
@@ -88,7 +88,6 @@
                         <!-- Password -->
                         <PasswordBox x:Name="tbxPassword"
                                      Tag="Password"
-                                     MaxWidth="183"
                                      Style="{StaticResource LoginPasswordBox}"
                                      Background="{StaticResource DarkAccentColor3}"
                                      />
@@ -110,7 +109,17 @@
                     </StackPanel>
                 </Viewbox>
                 
-                
+                <!-- Error text -->
+                <TextBlock  Grid.Row="1"
+                            Foreground="Red"
+                            Text="{Binding ErrorText}"
+                            TextWrapping="Wrap"
+                            Margin="5 20 5 5"
+                            HorizontalAlignment="Right"
+                            FontSize="{StaticResource FontSizeAverage}"
+                            FontFamily="{StaticResource RobotoLight}"
+                            />
+
             </Grid>
 
         </Border>

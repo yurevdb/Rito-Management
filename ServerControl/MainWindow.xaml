@@ -50,17 +50,17 @@
                 
                 <!-- The page navigation menu -->
                 <StackPanel Name="ButtonNavWrapper" Grid.Row="1" Orientation="Horizontal"
-                        Visibility="{Binding ShowNavigationMenu, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}"
-                        Background="{StaticResource AccentColor1}"
-                    >
+                            Visibility="{Binding ShowNavigationMenu, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}"
+                            Background="{StaticResource AccentColor1}"
+                            >
                     <Button Style="{StaticResource ButtonPageNavStyle}" Content="User Management"
-                    Command="{Binding ShowUserManagement}"
-                    Width="200"
-                    />
+                            Command="{Binding ShowUserManagement}"
+                            Width="200"
+                            />
                     <Button Style="{StaticResource ButtonPageNavStyle}" Content="Server Statistics"
-                    Command="{Binding ShowServerStats}"
-                    Width="180"
-                    />
+                            Command="{Binding ShowServerStats}"
+                            Width="180"
+                            />
                 </StackPanel>
 
                 <!-- The status bar -->
