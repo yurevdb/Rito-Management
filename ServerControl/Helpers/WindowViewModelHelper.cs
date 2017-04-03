@@ -38,15 +38,6 @@ namespace ServerControl
         }
 
         /// <summary>
-        /// Sets the property wether the navigation menu needs to be shown
-        /// </summary>
-        /// <param name="setter">The value to set</param>
-        public static void SetShowNavigationMenu(bool setter)
-        {
-            window.ShowNavigationMenu = setter;
-        }
-
-        /// <summary>
         /// Sets the status bar text.
         /// </summary>
         /// <param name="Text">The text to show.</param>
