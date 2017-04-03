@@ -69,6 +69,11 @@ namespace ServerControl
         /// </summary>
         public ICommand ShowServerStats { get; set; }
 
+        /// <summary>
+        /// Show the navigation menu
+        /// </summary>
+        public ICommand ShowNavigation { get; set; }
+
         #endregion
 
         #region Public Properties
@@ -150,6 +155,11 @@ namespace ServerControl
         public bool IsLoggedIn { get; set; } = false;
 
         /// <summary>
+        /// A <see cref="bool"/> that represents if the navigation menu needs to be shown
+        /// </summary>
+        public bool ShowNavigationMenu { get; set; } = false;
+
+        /// <summary>
         /// The text to display on the status bar
         /// </summary>
         public string StatusBarText { get; set; } = "Ready";
@@ -207,8 +217,13 @@ namespace ServerControl
                 this.SetView(ApplicationPage.Plot);
             });
 
+            ShowNavigation = new RelayCommand(() =>
+            {
+                this.ShowNavigationMenu = this.ShowNavigationMenu ? false : true;
+            });
+
             #endregion
-            
+
             // Fix window resize issue
             var resizer = new WindowResizer(window);
         }

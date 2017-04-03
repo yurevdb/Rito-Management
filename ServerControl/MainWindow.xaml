@@ -10,6 +10,7 @@
         Width="850" Height="525" 
         WindowStartupLocation="CenterScreen"
         WindowState="Normal"
+        ResizeMode="NoResize"
         >
 
     <WindowChrome.WindowChrome>
@@ -21,56 +22,68 @@
             />
     </WindowChrome.WindowChrome>
 
-    <Grid Name="grd">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+    <Grid>
 
-        <Frame Name="placeholder" NavigationUIVisibility="Hidden"
+        <Grid Panel.ZIndex="99">
+            <Button Style="{StaticResource HoverButtonStyle}"
+                    Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
+                    Command="{Binding ShowNavigation}"
+                    Visibility="{Binding IsLoggedIn, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}"
+                    />
+        </Grid>
+        
+        <!-- Main Content -->
+        <Grid Name="grd" Panel.ZIndex="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Frame Name="placeholder" NavigationUIVisibility="Hidden"
                Background="Transparent"
                Content="{Binding CurrentPage, Converter={local:PageValueConverter}}"
                Grid.RowSpan="{Binding IsLoggedIn, Converter={local:BooleanToRowSpanConverter}}"
                Grid.Row="0"
                />
 
-        <StackPanel Grid.Row="1" Visibility="{Binding IsLoggedIn, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}">
-            <!-- The buttons to change the view -->
-            <StackPanel Name="ButtonNavWrapper" Grid.Row="1" Orientation="Horizontal"
-                        Visibility="{Binding IsLoggedIn, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}"
+            <StackPanel Grid.Row="1" Visibility="{Binding IsloggedIn, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}">
+                <!-- The buttons to change the view -->
+                <StackPanel Name="ButtonNavWrapper" Grid.Row="1" Orientation="Horizontal"
+                        Visibility="{Binding ShowNavigationMenu, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}"
                         Background="{StaticResource AccentColor1}"
                     >
-                <Button Style="{StaticResource ButtonPageNavStyle}" Content="User Management"
+                    <Button Style="{StaticResource ButtonPageNavStyle}" Content="User Management"
                     Command="{Binding ShowUserManagement}"
                     Width="200"
                     />
-                <Button Style="{StaticResource ButtonPageNavStyle}" Content="Server Statistics"
+                    <Button Style="{StaticResource ButtonPageNavStyle}" Content="Server Statistics"
                     Command="{Binding ShowServerStats}"
                     Width="180"
                     />
-            </StackPanel>
+                </StackPanel>
 
-            <!-- The status bar -->
-            <StatusBar Grid.Row="1"
+                <!-- The status bar -->
+                <StatusBar Grid.Row="1"
                    Height="25"
                    Visibility="{Binding IsLoggedIn, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}"
                    Style="{StaticResource StatusBarStyle}"
                    >
-                <!-- Status bar items-->
-                <StatusBarItem HorizontalAlignment="Stretch" Margin="5,0,0,0">
-                    <TextBlock Text="{Binding StatusBarText}"  Style="{StaticResource StatusBarTextblockStyle}"/>
-                </StatusBarItem>
-                <StatusBarItem>
-                    <Button Style="{StaticResource StatusbarButtonStyle}" Visibility="{Binding StatusBarButtonVisibility, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}" >
-                        <TextBlock Text="[Contact Admin]"/>
-                    </Button>
-                </StatusBarItem>
-                <StatusBarItem HorizontalAlignment="Right" Margin="0,0,5,0">
-                    <Button Content="Log Out" Style="{StaticResource StatusbarButtonStyle}" FontSize="14" Command="{Binding LogOutCommand}"/>
-                </StatusBarItem>
+                    <!-- Status bar items-->
+                    <StatusBarItem HorizontalAlignment="Stretch" Margin="5,0,0,0">
+                        <TextBlock Text="{Binding StatusBarText}"  Style="{StaticResource StatusBarTextblockStyle}"/>
+                    </StatusBarItem>
+                    <StatusBarItem>
+                        <Button Style="{StaticResource StatusbarButtonStyle}" Visibility="{Binding StatusBarButtonVisibility, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}" >
+                            <TextBlock Text="[Contact Admin]"/>
+                        </Button>
+                    </StatusBarItem>
+                    <StatusBarItem HorizontalAlignment="Right" Margin="0,0,5,0">
+                        <Button Content="Log Out" Style="{StaticResource StatusbarButtonStyle}" FontSize="14" Command="{Binding LogOutCommand}"/>
+                    </StatusBarItem>
 
-            </StatusBar>
-        </StackPanel>
-        
+                </StatusBar>
+            </StackPanel>
+
+        </Grid>
     </Grid>
 </Window>
