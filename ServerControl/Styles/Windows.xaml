@@ -35,7 +35,7 @@
                         <Grid>
 
                             <!-- opacity mask for corners on grid -->
-                            <Border x:Name="Container" Background="{StaticResource BackgroundLightBrush}" CornerRadius="{Binding WindowCornerRadius, FallbackValue=10}">
+                            <Border x:Name="Container" Background="{StaticResource BackgroundLightBrush}" CornerRadius="{Binding WindowCornerRadius, FallbackValue=0}">
                             </Border>
 
                             <!-- Window border and dropshadow -->

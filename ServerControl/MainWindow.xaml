@@ -47,7 +47,8 @@
                />
 
             <StackPanel Grid.Row="1" Visibility="{Binding IsloggedIn, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}">
-                <!-- The buttons to change the view -->
+                
+                <!-- The page navigation menu -->
                 <StackPanel Name="ButtonNavWrapper" Grid.Row="1" Orientation="Horizontal"
                         Visibility="{Binding ShowNavigationMenu, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}"
                         Background="{StaticResource AccentColor1}"
