@@ -5,10 +5,21 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ServerControl"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="500" d:DesignWidth="800"
       Title="WelcomePage">
 
-    <Grid Background="White">
-        <TextBlock FontSize="70" Text="Welcome"/>
-    </Grid>
+    <Border Background="White" Padding="50 30 30 30">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <!-- Welcome Text-->
+            <TextBlock Margin="20 0 0 0" FontSize="70" Text="Welcome"/>
+            
+            
+        </Grid>
+    </Border>
+    
 </Page>
