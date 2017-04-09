@@ -131,6 +131,7 @@
     <Compile Include="ValueConverters\BooleanToRowSpanConverter.cs" />
     <Compile Include="ValueConverters\StringRGBToBrushConverter.cs" />
     <Compile Include="ValueConverters\VisibilityToIntConverter.cs" />
+    <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="ViewModels\WindowViewModel.cs" />
     <Compile Include="Views\Base\BasePage.cs" />
     <Compile Include="Views\CreateUserPage.xaml.cs">

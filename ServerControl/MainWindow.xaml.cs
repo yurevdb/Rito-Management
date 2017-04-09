@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Navigation;
 
 namespace ServerControl
 {
@@ -8,7 +7,7 @@ namespace ServerControl
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new WindowViewModel(this);
+            DataContext = new WindowViewModel(this);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using RitoManager.Core;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -78,6 +79,7 @@ namespace ServerControl.Core
                 await Task.Delay(2000);
                 if(this.Username == "yure" && (parameter as IHavePassword).SecurePassword.Unsecure() == "hallo")
                 {
+                    IoC.Get<ApplictationViewModel>().CurrentPage = ApplicationPage.Welcome;
                     ErrorText = string.Empty;
                 }
                 else
