@@ -12,8 +12,14 @@
     <SolidColorBrush x:Key="AccentColor3" Color="#F2F2F2"/>
     <SolidColorBrush x:Key="HighlightAccentColor3" Color="#fefefe"/>
     <SolidColorBrush x:Key="DarkAccentColor3" Color="#e5e5e5"/>
+    
+    <!-- Accent colors-->
+    <SolidColorBrush x:Key="SteelGray" Color="#696B6F"/>
+    <SolidColorBrush x:Key="Gossamer" Color="#429B8A"/>
+    <SolidColorBrush x:Key="Alizarin" Color="#F82229"/>
+    <SolidColorBrush x:Key="Pelorous" Color="#30A3BC"/>
 
-    <SolidColorBrush x:Key="LightFontColor" Color="#ebebeb"/>
+    <SolidColorBrush x:Key="LightFontColor" Color="#efefef"/>
     <SolidColorBrush x:Key="DarkFontColor" Color="#141823"/>
     <SolidColorBrush x:Key="RedAccentFontColor" Color="#7F3F5A"/>
 

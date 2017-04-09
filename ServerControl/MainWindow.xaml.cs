@@ -8,9 +8,7 @@ namespace ServerControl
         public MainWindow()
         {
             InitializeComponent();
-            WindowViewModel wvm = new WindowViewModel(this);
-            this.DataContext = wvm;
-            wvm.SetView(ApplicationPage.Login);
+            this.DataContext = new WindowViewModel(this);
         }
     }
 }

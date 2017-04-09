@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServerControl.Core;
+using System;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
@@ -97,14 +98,8 @@ namespace ServerControl
         /// </summary>
         public int OuterMarginSize
         {
-            get
-            {
-                return window.WindowState == WindowState.Maximized ? 0 : outerMarginSize;
-            }
-            set
-            {
-                outerMarginSize = value;
-            }
+            get => window.WindowState == WindowState.Maximized ? 0 : outerMarginSize;
+            set => outerMarginSize = value;
         }
 
         /// <summary>
@@ -117,14 +112,8 @@ namespace ServerControl
         /// </summary>
         public int WindowRadius
         {
-            get
-            {
-                return window.WindowState == WindowState.Maximized ? 0 : windowRadius;
-            }
-            set
-            {
-                windowRadius = value;
-            }
+            get => window.WindowState == WindowState.Maximized ? 0 : windowRadius;
+            set => windowRadius = value;
         }
 
         /// <summary>
@@ -145,29 +134,9 @@ namespace ServerControl
         public Thickness InnerContentPadding { get { return new Thickness(ResizeBorder); } }
 
         /// <summary>
-        /// The current page of the application
-        /// </summary>
-        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Login;
-
-        /// <summary>
         /// A <see cref="bool"/> that represents if someone is logged in
         /// </summary>
         public bool IsLoggedIn { get; set; } = false;
-
-        /// <summary>
-        /// A <see cref="bool"/> that represents if the navigation menu needs to be shown
-        /// </summary>
-        public bool ShowNavigationMenu { get; set; } = false;
-
-        /// <summary>
-        /// The text to display on the status bar
-        /// </summary>
-        public string StatusBarText { get; set; } = "Ready";
-
-        /// <summary>
-        /// A <see cref="bool"/> that represents if the status bar button should be displayed
-        /// </summary>
-        public bool StatusBarButtonVisibility { get; set; } = false;
 
         #endregion
 
@@ -200,26 +169,19 @@ namespace ServerControl
             MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(window, GetMousePosition()));
 
             LogOutCommand = new RelayCommand(() => {
-                this.SetView(ApplicationPage.Login);
-                WindowViewModelHelper.SetLoggedIn(false);
             });
 
             ContactCommand = new RelayCommand(() => {
-                StatusBarText = "Ready";
-                StatusBarButtonVisibility = false;
             });
 
             ShowUserManagement = new RelayCommand(() => {
-                this.SetView(ApplicationPage.UserManagement);
             });
 
             ShowServerStats = new RelayCommand(() => {
-                this.SetView(ApplicationPage.Plot);
             });
 
             ShowNavigation = new RelayCommand(() =>
             {
-                this.ShowNavigationMenu = this.ShowNavigationMenu ? false : true;
             });
 
             #endregion

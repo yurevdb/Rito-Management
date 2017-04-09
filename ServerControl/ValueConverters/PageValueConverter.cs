@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServerControl.Core;
+using System;
 using System.Diagnostics;
 using System.Globalization;
 
@@ -28,7 +29,6 @@ namespace ServerControl
                     if (DoesPlotViewExist)
                     {
                         DoesPlotViewExist = false;
-                        plotview.Dispose();
                         plotview = null;
                     }
                     return new LoginPage();

@@ -1,4 +1,6 @@
-﻿namespace ServerControl
+﻿using ServerControl.Core;
+
+namespace ServerControl
 {
     /// <summary>
     /// Interaction logic for CreateUserPage.xaml

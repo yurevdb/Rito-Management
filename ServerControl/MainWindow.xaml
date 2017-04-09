@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ServerControl"
+        xmlns:core="clr-namespace:ServerControl.Core;assembly=RitoManager.Core"
         mc:Ignorable="d"
         Title="Rito Manager" 
         Style="{StaticResource CustomWindowStyle}" 
@@ -40,11 +41,11 @@
             </Grid.RowDefinitions>
 
             <Frame Name="placeholder" NavigationUIVisibility="Hidden"
-               Background="Transparent"
-               Content="{Binding CurrentPage, Converter={local:PageValueConverter}}"
-               Grid.RowSpan="{Binding IsLoggedIn, Converter={local:BooleanToRowSpanConverter}}"
-               Grid.Row="0"
-               />
+                   Background="Transparent"
+                   Content="{Binding CurrentPage, Converter={local:PageValueConverter}}"
+                   Grid.RowSpan="{Binding IsLoggedIn, Converter={local:BooleanToRowSpanConverter}}"
+                   Grid.Row="0"
+                   />   
 
             <StackPanel Grid.Row="1" Visibility="{Binding IsloggedIn, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}">
                 

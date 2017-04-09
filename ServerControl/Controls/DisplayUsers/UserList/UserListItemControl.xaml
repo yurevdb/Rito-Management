@@ -1,0 +1,96 @@
+﻿<UserControl x:Class="ServerControl.UserListItemControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ServerControl"
+             mc:Ignorable="d"
+             Height="60"
+             d:DesignHeight="60" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <Style x:Key="ContentStyle" TargetType="{x:Type ContentControl}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ContentControl">
+                        
+                        <!-- Content -->
+                        <Grid Name="container" Background="{StaticResource ForegroundLightBrush}">
+
+                            <Grid.ColumnDefinitions>
+                                <!-- Initials Image -->
+                                <ColumnDefinition Width="Auto"/>
+                                <!-- Main Content -->
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Selected Indicator -->
+                            <Border Background="{StaticResource Alizarin}" HorizontalAlignment="Left" Width="3" Visibility="{Binding IsSelected, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}"/>
+
+                            <!-- Initials Image padding -->
+                            <Border Grid.Column="0" Padding="8">
+                                <!-- Initials Image background -->
+                                <Border Background="{Binding ImageColorBackground, Converter={local:StringRGBToBrushConverter}}"
+                                        Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
+                                        CornerRadius="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
+                                        >       
+                                        <!-- Initials Image initials -->
+                                    <TextBlock Text="{Binding Initials}" 
+                                                   VerticalAlignment="Center" 
+                                                   HorizontalAlignment="Center"
+                                                   Foreground="White"
+                                                   FontSize="{StaticResource FontSizeRegular}"
+                                                   />
+                                </Border>
+                            </Border>
+
+                            <!-- Main Content -->
+                            <Border Padding="0 0 8 0" Grid.Column="1">
+                                <StackPanel VerticalAlignment="Center">
+                                    <!-- User Name -->
+                                    <TextBlock Text="{Binding Name}" 
+                                               FontFamily="{StaticResource RobotoBold}"
+                                               FontSize="{StaticResource FontSizeRegular}"
+                                               Foreground="{StaticResource Pelorous}"
+                                               TextTrimming="CharacterEllipsis"
+                                               />       
+                                    <!-- Account Info -->
+                                    <TextBlock Text="{Binding AccountNumber}"
+                                               FontFamily="{StaticResource RobotoLight}"
+                                               FontSize="{StaticResource FontSizeAverage}"
+                                               Foreground="{StaticResource DarkFontColor}"
+                                               TextTrimming="CharacterEllipsis"
+                                               />       
+                                </StackPanel>
+                            </Border>
+
+                        </Grid>
+                        
+                        <!-- Hover Effect -->
+                        <!--<ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="{StaticResource Gossamer}" Duration="0:0:0.3" Storyboard.TargetName="container" Storyboard.TargetProperty="Background.Color" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation To="{StaticResource ForegroundLight}" Duration="0:0:0.3" Storyboard.TargetName="container" Storyboard.TargetProperty="Background.Color" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>-->
+                        
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    
+    <!-- The Control -->
+    <ContentControl Style="{StaticResource ContentStyle}" />
+
+</UserControl>
