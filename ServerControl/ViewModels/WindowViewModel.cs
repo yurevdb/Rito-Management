@@ -1,4 +1,5 @@
-﻿using ServerControl.Core;
+﻿using RitoManager.Core;
+using ServerControl.Core;
 using System;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -169,19 +170,23 @@ namespace ServerControl
             MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(window, GetMousePosition()));
 
             LogOutCommand = new RelayCommand(() => {
+                IoC.Get<ApplictationViewModel>().IsLoggedIn = false;
+                IoC.Get<ApplictationViewModel>().CurrentPage = ApplicationPage.Login;
             });
 
             ContactCommand = new RelayCommand(() => {
             });
 
             ShowUserManagement = new RelayCommand(() => {
+                IoC.Get<ApplictationViewModel>().CurrentPage = ApplicationPage.UserManagement;
             });
 
             ShowServerStats = new RelayCommand(() => {
+                IoC.Get<ApplictationViewModel>().CurrentPage = ApplicationPage.Plot;
             });
 
-            ShowNavigation = new RelayCommand(() =>
-            {
+            ShowNavigation = new RelayCommand(() => { 
+                IoC.Get<ApplictationViewModel>().ShowNavigationMenu = IoC.Get<ApplictationViewModel>().ShowNavigationMenu ? false : true;
             });
 
             #endregion

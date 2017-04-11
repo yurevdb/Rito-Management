@@ -29,7 +29,7 @@
             <Button Style="{StaticResource HoverButtonStyle}"
                     Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
                     Command="{Binding ShowNavigation}"
-                    Visibility="{Binding IsLoggedIn, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}"
+                    Visibility="{Binding ApplicationViewModel.IsLoggedIn, Source={x:Static local:ViewModelLocator.Instance}, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}"
                     />
         </Grid>
         
@@ -75,7 +75,7 @@
                         <TextBlock Text="{Binding StatusBarText}"  Style="{StaticResource StatusBarTextblockStyle}"/>
                     </StatusBarItem>
                     <StatusBarItem>
-                        <Button Style="{StaticResource StatusbarButtonStyle}" Visibility="{Binding StatusBarButtonVisibility, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}" >
+                        <Button Style="{StaticResource StatusbarButtonStyle}" Visibility="{Binding ApplicationViewModel.StatusBarButtonVisibility, Source={x:Static local:ViewModelLocator.Instance}, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}" >
                             <TextBlock Text="[Contact Admin]"/>
                         </Button>
                     </StatusBarItem>

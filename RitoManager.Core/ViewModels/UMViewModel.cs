@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using RitoManager.Core;
+using System.Windows.Input;
 
 namespace ServerControl.Core
 {
@@ -16,10 +17,12 @@ namespace ServerControl.Core
         {
             ShowCreateUserPage = new RelayCommand(() => 
             {
+                IoC.Get<ApplictationViewModel>().CurrentPage = ApplicationPage.CreateUser;
             });
 
             ShowUserInfoPage = new RelayCommand(() =>
             {
+                IoC.Get<ApplictationViewModel>().CurrentPage = ApplicationPage.UserInfo;
             });
         }
     }

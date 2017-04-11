@@ -23,6 +23,11 @@ namespace RitoManager.Core
         public bool IsLoggedIn { get; set; } = false;
 
         /// <summary>
+        /// Represents if the status bar button should be visible
+        /// </summary>
+        public bool StatusBarButtonVisibility { get; set; } = false;
+
+        /// <summary>
         /// The status of the application
         /// </summary>
         public string StatusText { get; set; } = Status.Ready;

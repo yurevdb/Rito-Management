@@ -80,6 +80,7 @@ namespace ServerControl.Core
                 if(this.Username == "yure" && (parameter as IHavePassword).SecurePassword.Unsecure() == "hallo")
                 {
                     IoC.Get<ApplictationViewModel>().CurrentPage = ApplicationPage.Welcome;
+                    IoC.Get<ApplictationViewModel>().IsLoggedIn = true;
                     ErrorText = string.Empty;
                 }
                 else
