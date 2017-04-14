@@ -24,7 +24,7 @@ namespace ServerControl
         /// <summary>
         /// the radius of the edges from the window
         /// </summary>
-        private int windowRadius = 0;
+        private int windowRadius = 10;
         
         #endregion
 
