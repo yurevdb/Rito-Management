@@ -54,12 +54,21 @@
                                 </Grid.OpacityMask>
 
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="{Binding TitleHeightGridLength, FallbackValue=30}"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
 
                                 <!-- Title Bar -->
-                                <Grid Panel.ZIndex="1" Grid.Row="0" Background="{StaticResource DarkAccentColor3}">
+                                <Grid Panel.ZIndex="1" Height="{Binding TitleHeightGridLength, FallbackValue=30}" VerticalAlignment="Top">
+                                    
+                                    <!-- Title Bar Background-->
+                                    <Grid.Background>
+                                        <VisualBrush Opacity="0.2">
+                                            <VisualBrush.Visual>
+                                                <Border Background="Transparent"/>
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </Grid.Background>
+                                    
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
@@ -86,7 +95,7 @@
                                 </Grid>
 
                                 <!-- Page Content -->
-                                <Border Grid.Row="1" Padding="0" BorderThickness="0" Margin="0" Background="Black">
+                                <Border Padding="0" BorderThickness="0" Margin="0" Background="Black">
                                     <ContentPresenter Content="{TemplateBinding Content}"/>
                                 </Border>
 
