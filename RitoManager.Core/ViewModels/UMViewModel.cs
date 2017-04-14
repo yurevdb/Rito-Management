@@ -17,12 +17,12 @@ namespace ServerControl.Core
         {
             ShowCreateUserPage = new RelayCommand(() => 
             {
-                IoC.Get<ApplictationViewModel>().CurrentPage = ApplicationPage.CreateUser;
+                IoC.Get<ApplicationViewModel>().CurrentPage = ApplicationPage.CreateUser;
             });
 
             ShowUserInfoPage = new RelayCommand(() =>
             {
-                IoC.Get<ApplictationViewModel>().CurrentPage = ApplicationPage.UserInfo;
+                IoC.Get<ApplicationViewModel>().CurrentPage = ApplicationPage.UserInfo;
             });
         }
     }

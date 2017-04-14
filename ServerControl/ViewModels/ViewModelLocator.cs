@@ -6,6 +6,6 @@ namespace ServerControl
     {
         public static ViewModelLocator Instance { get; set; } = new ViewModelLocator();
 
-        public static ApplictationViewModel ApplicationViewModel => IoC.Get<ApplictationViewModel>();
+        public static ApplicationViewModel ApplicationViewModel => IoC.Get<ApplicationViewModel>();
     }
 }

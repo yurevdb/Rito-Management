@@ -46,31 +46,29 @@
                    Grid.RowSpan="{Binding ApplicationViewModel.IsLoggedIn, Source={x:Static local:ViewModelLocator.Instance}, Converter={local:BooleanToRowSpanConverter}}"
                    Grid.Row="0"
                    />
-
-            <StackPanel Grid.Row="1" Visibility="{Binding ApplicationViewModel.IsloggedIn, Source={x:Static local:ViewModelLocator.Instance}, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}">
-                
-                <!-- The page navigation menu -->
-                <StackPanel Name="ButtonNavWrapper" Grid.Row="1" Orientation="Horizontal"
-                            Visibility="{Binding ApplicationViewModel.ShowNavigationMenu, Source={x:Static local:ViewModelLocator.Instance}, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}"
-                            Background="{StaticResource AccentColor1}"
-                            >
-                    <Button Style="{StaticResource ButtonPageNavStyle}" Content="User Management"
-                            Command="{Binding ShowUserManagement}"
-                            Width="200"
-                            />
-                    <Button Style="{StaticResource ButtonPageNavStyle}" Content="Server Statistics"
-                            Command="{Binding ShowServerStats}"
-                            Width="180"
-                            />
-                </StackPanel>
+            
+            <!-- The page navigation menu -->
+            <StackPanel Name="ButtonNavWrapper" Grid.Row="1" Orientation="Horizontal"
+                        Visibility="{Binding ApplicationViewModel.ShowNavigationMenu, Source={x:Static local:ViewModelLocator.Instance}, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}"
+                        Background="{StaticResource AccentColor1}"
+                        >
+                <Button Style="{StaticResource ButtonPageNavStyle}" Content="User Management"
+                        Command="{Binding ShowUserManagement}"
+                        Width="200"
+                        />
+                <Button Style="{StaticResource ButtonPageNavStyle}" Content="Server Statistics"
+                        Command="{Binding ShowServerStats}"
+                        Width="180"
+                        />
+            </StackPanel>
 
                 <!-- The status bar -->
-                <StatusBar Grid.Row="1"
+                <!--<StatusBar Grid.Row="1"
                    Height="25"
                    Visibility="{Binding ApplicationViewModel.IsLoggedIn, Source={x:Static local:ViewModelLocator.Instance}, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}"
                    Style="{StaticResource StatusBarStyle}"
                    >
-                    <!-- Status bar items-->
+                    --><!-- Status bar items--><!--
                     <StatusBarItem HorizontalAlignment="Stretch" Margin="5,0,0,0">
                         <TextBlock Text="{Binding StatusBarText}"  Style="{StaticResource StatusBarTextblockStyle}"/>
                     </StatusBarItem>
@@ -83,8 +81,7 @@
                         <Button Content="Log Out" Style="{StaticResource StatusbarButtonStyle}" FontSize="14" Command="{Binding LogOutCommand}"/>
                     </StatusBarItem>
 
-                </StatusBar>
-            </StackPanel>
+                </StatusBar>-->
 
         </Grid>
     </Grid>

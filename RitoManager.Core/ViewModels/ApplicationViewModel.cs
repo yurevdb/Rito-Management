@@ -5,7 +5,7 @@ namespace RitoManager.Core
     /// <summary>
     /// A viewmodel to holds the application variables
     /// </summary>
-    public class ApplictationViewModel: BaseViewModel
+    public class ApplicationViewModel: BaseViewModel
     {
         /// <summary>
         /// The current page of the application

@@ -37,7 +37,7 @@ namespace RitoManager.Core
         private static void BindViewModels()
         {
             // Bind to a single instance of Application view model
-            Kernel.Bind<ApplictationViewModel>().ToConstant(new ApplictationViewModel());
+            Kernel.Bind<ApplicationViewModel>().ToConstant(new ApplicationViewModel());
         }
 
         #endregion

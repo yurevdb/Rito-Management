@@ -35,7 +35,7 @@
                         <Grid>
 
                             <!-- opacity mask for corners on grid -->
-                            <Border x:Name="Container" Background="{StaticResource BackgroundLightBrush}" CornerRadius="{Binding WindowCornerRadius, FallbackValue=0}">
+                            <Border x:Name="Container" Background="{StaticResource BackgroundLightBrush}" CornerRadius="{Binding WindowCornerRadius, FallbackValue=10}">
                             </Border>
 
                             <!-- Window border and dropshadow -->
@@ -76,26 +76,35 @@
                                     </Grid.ColumnDefinitions>
 
                                     <!-- Icon -->
-                                    <Button Grid.Column="0" Style="{StaticResource SystemIconButton}" Command="{Binding MenuCommand}">
-                                        <!--link to the logo-->
+                                    <!--<Button Grid.Column="0" Style="{StaticResource SystemIconButton}" Command="{Binding MenuCommand}">
+                                        --><!--link to the logo--><!--
                                         <Image Source="/Images/Logo/logo.ico" />
-                                    </Button>
+                                    </Button>-->
 
                                     <!-- Title Text -->
-                                    <Viewbox  Grid.Column="0" Grid.ColumnSpan="3" Margin="0">
-                                        <TextBlock Style="{StaticResource HeaderText}" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title, FallbackValue='Server Control'}"/>
+                                    <Viewbox  Grid.Column="0" Margin="0">
+                                        <Button Style="{StaticResource WindowControlButton}" 
+                                                Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title, FallbackValue='Server Control'}"
+                                                Command="{Binding TitleCommand}"/>
                                     </Viewbox>
 
                                     <!-- Window Buttons -->
                                     <StackPanel Orientation="Horizontal" Grid.Column="2">
                                         <Button Style="{StaticResource WindowControlButton}"  Command="{Binding MinimizeCommand}" Content="_"/>
                                         <Button Style="{StaticResource WindowControlButton}" Command="{Binding MaximizeCommand}" Content="[ ]"/>
-                                        <Button Style="{StaticResource WindowCloseButton}" Command="{Binding CloseCommand}" Content="X"/>
+                                        <Button Style="{StaticResource WindowControlButton}" Command="{Binding CloseCommand}" Content="X"/>
                                     </StackPanel>
                                 </Grid>
 
                                 <!-- Page Content -->
-                                <Border Padding="0" BorderThickness="0" Margin="0" Background="Black">
+                                <Border Padding="0" BorderThickness="0" Margin="0">
+                                    <Border.Background>
+                                        <VisualBrush>
+                                            <VisualBrush.Visual>
+                                                <MediaElement Source="pack://siteoforigin:,,,/Resources/RM_Background.jpg" />
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </Border.Background>
                                     <ContentPresenter Content="{TemplateBinding Content}"/>
                                 </Border>
 

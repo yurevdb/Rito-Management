@@ -26,7 +26,6 @@ namespace ServerControl
         /// </summary>
         private int windowRadius = 0;
         
-
         #endregion
 
         #region Commands
@@ -75,6 +74,11 @@ namespace ServerControl
         /// Show the navigation menu
         /// </summary>
         public ICommand ShowNavigation { get; set; }
+
+        /// <summary>
+        /// Shows the custom context menu
+        /// </summary>
+        public ICommand TitleCommand { get; set; }
 
         #endregion
 
@@ -134,11 +138,6 @@ namespace ServerControl
 
         public Thickness InnerContentPadding { get { return new Thickness(ResizeBorder); } }
 
-        /// <summary>
-        /// A <see cref="bool"/> that represents if someone is logged in
-        /// </summary>
-        public bool IsLoggedIn { get; set; } = false;
-
         #endregion
 
         #region Constructor
@@ -168,25 +167,26 @@ namespace ServerControl
             MaximizeCommand = new RelayCommand(() => window.WindowState ^= WindowState.Maximized);
             CloseCommand = new RelayCommand(() => window.Close());
             MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(window, GetMousePosition()));
-
-            LogOutCommand = new RelayCommand(() => {
-                IoC.Get<ApplictationViewModel>().IsLoggedIn = false;
-                IoC.Get<ApplictationViewModel>().CurrentPage = ApplicationPage.Login;
-            });
-
+            
             ContactCommand = new RelayCommand(() => {
             });
 
+            TitleCommand = new RelayCommand(() => 
+            {
+                IoC.Get<ApplicationViewModel>().IsLoggedIn = false;
+                IoC.Get<ApplicationViewModel>().CurrentPage = ApplicationPage.Login;
+            });
+
             ShowUserManagement = new RelayCommand(() => {
-                IoC.Get<ApplictationViewModel>().CurrentPage = ApplicationPage.UserManagement;
+                IoC.Get<ApplicationViewModel>().CurrentPage = ApplicationPage.UserManagement;
             });
 
             ShowServerStats = new RelayCommand(() => {
-                IoC.Get<ApplictationViewModel>().CurrentPage = ApplicationPage.Plot;
+                IoC.Get<ApplicationViewModel>().CurrentPage = ApplicationPage.Plot;
             });
 
             ShowNavigation = new RelayCommand(() => { 
-                IoC.Get<ApplictationViewModel>().ShowNavigationMenu = IoC.Get<ApplictationViewModel>().ShowNavigationMenu ? false : true;
+                IoC.Get<ApplicationViewModel>().ShowNavigationMenu = IoC.Get<ApplicationViewModel>().ShowNavigationMenu ? false : true;
             });
 
             #endregion

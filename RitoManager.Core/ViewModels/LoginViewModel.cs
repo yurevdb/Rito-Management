@@ -79,8 +79,8 @@ namespace ServerControl.Core
                 await Task.Delay(2000);
                 if(this.Username == "yure" && (parameter as IHavePassword).SecurePassword.Unsecure() == "hallo")
                 {
-                    IoC.Get<ApplictationViewModel>().CurrentPage = ApplicationPage.Welcome;
-                    IoC.Get<ApplictationViewModel>().IsLoggedIn = true;
+                    IoC.Get<ApplicationViewModel>().CurrentPage = ApplicationPage.Welcome;
+                    IoC.Get<ApplicationViewModel>().IsLoggedIn = true;
                     ErrorText = string.Empty;
                 }
                 else
