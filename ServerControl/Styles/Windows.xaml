@@ -40,9 +40,9 @@
 
                             <!-- Window border and dropshadow -->
                             <Border CornerRadius="{Binding WindowCornerRadius, FallbackValue=10}"
-                                        Background="{Binding ForegroundLightBrush, FallbackValue=White}">
+                                    Background="{Binding ForegroundLightBrush, FallbackValue=White}">
                                 <Border.Effect>
-                                    <DropShadowEffect ShadowDepth="1" Opacity="0.2"/>
+                                    <DropShadowEffect ShadowDepth="1" Opacity="0.3"/>
                                 </Border.Effect>
                             </Border>
 
@@ -58,17 +58,22 @@
                                 </Grid.RowDefinitions>
 
                                 <!-- Title Bar -->
-                                <Grid Panel.ZIndex="1" Height="{Binding TitleHeightGridLength, FallbackValue=30}" VerticalAlignment="Top" ClipToBounds="True">
+                                <Grid Panel.ZIndex="1"
+                                      Grid.Row="0"
+                                      Background="Transparent"
+                                      Height="{Binding TitleHeightGridLength, FallbackValue=30}" 
+                                      VerticalAlignment="Top" 
+                                      ClipToBounds="True">
                                     
                                     <!-- Title Bar Background-->
-                                    <Grid.Background>
+                                    <!--<Grid.Background>
                                         <VisualBrush>
                                             <VisualBrush.Visual>
-                                                <Border Background="Transparent">
+                                                <Border Background="Red">
                                                 </Border>
                                             </VisualBrush.Visual>
                                         </VisualBrush>
-                                    </Grid.Background>
+                                    </Grid.Background>-->
                                     
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
@@ -98,14 +103,7 @@
                                 </Grid>
 
                                 <!-- Page Content -->
-                                <Border Padding="0" BorderThickness="0" Margin="0" ClipToBounds="True">
-                                    <Border.Background>
-                                        <VisualBrush>
-                                            <VisualBrush.Visual>
-                                                <MediaElement Source="pack://siteoforigin:,,,/Resources/RM_Background.jpg" />
-                                            </VisualBrush.Visual>
-                                        </VisualBrush>
-                                    </Border.Background>
+                                <Border Grid.Row="0" Padding="0" BorderThickness="0" Margin="0" ClipToBounds="True">
                                     <ContentPresenter Content="{TemplateBinding Content}"/>
                                 </Border>
 

@@ -11,10 +11,6 @@ namespace ServerControl
         public LoginPage()
         {
             InitializeComponent();
-
-            this.PageLoadAnimation = PageAnimation.None;
-            this.PageUnloadAnimation = PageAnimation.None;
-            this.AnimateSeconds = 0F;
         }
 
         /// <summary>

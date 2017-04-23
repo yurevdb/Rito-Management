@@ -20,8 +20,10 @@ namespace ServerControl
             // Set up the IoC
             IoC.Setup();
 
-            // Show the main window
+            // Create the main window
             Current.MainWindow = new MainWindow();
+
+            // Show the main window
             Current.MainWindow.Show();
         }
     }

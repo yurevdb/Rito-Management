@@ -25,6 +25,7 @@
 
     <Grid>
 
+        <!-- Overlay button -->
         <Grid Panel.ZIndex="99">
             <Button Style="{StaticResource HoverButtonStyle}"
                     Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
@@ -35,21 +36,48 @@
         
         <!-- Main Content -->
         <Grid Name="grd" Panel.ZIndex="0">
+            
+            <!-- Video Background-->
+            <Grid.Background>
+                <VisualBrush>
+                    <VisualBrush.Visual>
+                        <MediaElement Name="myMediaElement" Grid.ColumnSpan="3" UnloadedBehavior="Close">
+                            <MediaElement.Triggers>
+                                <EventTrigger RoutedEvent="MediaElement.Loaded">
+                                    <EventTrigger.Actions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <!-- The MediaTimeline has a RepeatBehavior="Forever" which makes the media play over and over indefinitely.-->
+                                                <MediaTimeline Source="pack://siteoforigin:,,,/Resources/Blue_Particle_Motion_Background_1080.mp4"
+                                                           Storyboard.TargetName="myMediaElement"  
+                                                           RepeatBehavior="Forever" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger.Actions>
+                                </EventTrigger>
+                            </MediaElement.Triggers>
+                        </MediaElement>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Grid.Background>
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Frame Name="placeholder" NavigationUIVisibility="Hidden"
-                   Background="Transparent"
-                   Content="{Binding ApplicationViewModel.CurrentPage, Source={x:Static local:ViewModelLocator.Instance}, Converter={local:PageValueConverter}}"
-                   Grid.RowSpan="{Binding ApplicationViewModel.IsLoggedIn, Source={x:Static local:ViewModelLocator.Instance}, Converter={local:BooleanToRowSpanConverter}}"
-                   Grid.Row="0"
-                   />
-            
+            <!-- The Frame -->
+            <local:PageHost 
+                    DataContext="{Binding ApplicationViewModel.CurrentPage, Source={x:Static local:ViewModelLocator.Instance}, Converter={local:PageValueConverter}}"
+                    Padding="0 30 0 0"
+                    CurrentPage="{Binding}"
+                    Grid.Row="0"
+                    />
+
             <!-- The page navigation menu -->
             <StackPanel Name="ButtonNavWrapper" Grid.Row="1" Orientation="Horizontal"
-                        Visibility="{Binding ApplicationViewModel.ShowNavigationMenu, Source={x:Static local:ViewModelLocator.Instance}, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}"
+                        Height="30"
+                        local:AnimateInFromBottomProperty.Value="{Binding ApplicationViewModel.ShowNavigationMenu, Source={x:Static local:ViewModelLocator.Instance}}"
                         Background="{StaticResource AccentColor1}"
                         >
                 <Button Style="{StaticResource ButtonPageNavStyle}" Content="User Management"
@@ -61,27 +89,6 @@
                         Width="180"
                         />
             </StackPanel>
-
-                <!-- The status bar -->
-                <!--<StatusBar Grid.Row="1"
-                   Height="25"
-                   Visibility="{Binding ApplicationViewModel.IsLoggedIn, Source={x:Static local:ViewModelLocator.Instance}, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}"
-                   Style="{StaticResource StatusBarStyle}"
-                   >
-                    --><!-- Status bar items--><!--
-                    <StatusBarItem HorizontalAlignment="Stretch" Margin="5,0,0,0">
-                        <TextBlock Text="{Binding StatusBarText}"  Style="{StaticResource StatusBarTextblockStyle}"/>
-                    </StatusBarItem>
-                    <StatusBarItem>
-                        <Button Style="{StaticResource StatusbarButtonStyle}" Visibility="{Binding ApplicationViewModel.StatusBarButtonVisibility, Source={x:Static local:ViewModelLocator.Instance}, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}" >
-                            <TextBlock Text="[Contact Admin]"/>
-                        </Button>
-                    </StatusBarItem>
-                    <StatusBarItem HorizontalAlignment="Right" Margin="0,0,5,0">
-                        <Button Content="Log Out" Style="{StaticResource StatusbarButtonStyle}" FontSize="14" Command="{Binding LogOutCommand}"/>
-                    </StatusBarItem>
-
-                </StatusBar>-->
 
         </Grid>
     </Grid>

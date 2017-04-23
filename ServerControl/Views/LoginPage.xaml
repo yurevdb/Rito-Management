@@ -11,32 +11,8 @@
                 x:Name="lPage"
                 Title="LoginPage">
 
-    <Grid Name="grd" >
-        
-        <!-- Video Background -->
-        <Grid.Background>
-            <VisualBrush>
-                <VisualBrush.Visual>
-                    <MediaElement Name="myMediaElement" Grid.ColumnSpan="3" UnloadedBehavior="Close">
-                        <MediaElement.Triggers>
-                            <EventTrigger RoutedEvent="MediaElement.Loaded">
-                                <EventTrigger.Actions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <!-- The MediaTimeline has a RepeatBehavior="Forever" which makes the media play over and over indefinitely.-->
-                                            <MediaTimeline Source="pack://siteoforigin:,,,/Resources/Blue_Particle_Motion_Background_1080.mp4"
-                                                           Storyboard.TargetName="myMediaElement"  
-                                                           RepeatBehavior="Forever" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger.Actions>
-                            </EventTrigger>
-                        </MediaElement.Triggers>
-                    </MediaElement>
-                </VisualBrush.Visual>
-            </VisualBrush>
-        </Grid.Background>
-        
+    <Grid Name="grd" Background="Transparent">
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="3*"/>

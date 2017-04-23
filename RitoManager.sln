@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RitoManager", "ServerControl\RitoManager.csproj", "{DA42F763-D00D-467F-B1D6-FB636BCFFAA4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RitoManager.WPF", "ServerControl\RitoManager.WPF.csproj", "{DA42F763-D00D-467F-B1D6-FB636BCFFAA4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransmissionControl", "DataSender\TransmissionControl.csproj", "{AF610862-07E1-4641-BFA5-340CEBAD7A41}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Rito_Manager_Installer", "Rito_Manager_Installer\Rito_Manager_Installer.vdproj", "{4A6E45EB-1BAB-4B5C-9240-294032F21710}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RitoManager.Core", "RitoManager.Core\RitoManager.Core.csproj", "{99C29D0E-0AF3-44BD-9A57-9A93647613A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RitoManager.UserManagement", "RitoManager.UserManagement\RitoManager.UserManagement.csproj", "{A0C73D68-DE35-48BE-87AC-8B6A645E1726}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{99C29D0E-0AF3-44BD-9A57-9A93647613A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99C29D0E-0AF3-44BD-9A57-9A93647613A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99C29D0E-0AF3-44BD-9A57-9A93647613A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0C73D68-DE35-48BE-87AC-8B6A645E1726}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0C73D68-DE35-48BE-87AC-8B6A645E1726}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0C73D68-DE35-48BE-87AC-8B6A645E1726}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0C73D68-DE35-48BE-87AC-8B6A645E1726}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

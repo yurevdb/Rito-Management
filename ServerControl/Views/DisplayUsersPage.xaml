@@ -12,7 +12,7 @@
 
     <Grid>
 
-        <local:UsersDisplay />
+        <local:UsersDisplay Margin="20"/>
 
     </Grid>
 </local:BasePage>

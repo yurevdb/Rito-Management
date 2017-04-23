@@ -114,11 +114,17 @@
     <Compile Include="Controls\DisplayUsers\UsersControl\UsersDisplay.xaml.cs">
       <DependentUpon>UsersDisplay.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PageHost.xaml.cs">
+      <DependentUpon>PageHost.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Animation\FrameworkElementAnimations.cs" />
     <Compile Include="Helpers\Animation\PageAnimation.cs" />
     <Compile Include="Helpers\Animation\PageAnimations.cs" />
     <Compile Include="Helpers\Animation\StoryboardHelpers.cs" />
+    <Compile Include="Helpers\Attached Properties\AnimateBaseProperty.cs" />
     <Compile Include="Helpers\Attached Properties\BaseAttachedProperty.cs" />
     <Compile Include="Helpers\Attached Properties\ButtonAttachedProperty.cs" />
+    <Compile Include="Helpers\Attached Properties\NoFrameHistory.cs" />
     <Compile Include="Helpers\Attached Properties\PasswordBoxAttachedProperties.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -169,6 +175,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\DisplayUsers\UsersControl\UsersDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PageHost.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

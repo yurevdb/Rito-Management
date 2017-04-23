@@ -32,6 +32,7 @@ namespace ServerControl
                         DoesPlotViewExist = false;
                         plotview = null;
                     }
+                    IoC.Get<ApplicationViewModel>().ShowNavigationMenu = false;
                     return new LoginPage();
                 case ApplicationPage.Plot:
                     PlotView plot;
@@ -51,6 +52,7 @@ namespace ServerControl
                 case ApplicationPage.UserInfo:
                     return new DisplayUsersPage();
                 case ApplicationPage.Welcome:
+                    IoC.Get<ApplicationViewModel>().ShowNavigationMenu = true;
                     return new WelcomePage();
                 default:
                     Debugger.Break();
