@@ -77,7 +77,7 @@ namespace RitoManager.UserManagement
         /// <param name="level"><see cref="UserLevel"/> of the user, default <see cref="UserLevel.User"/></param>
         public User(string name, string sirname, int age, int accountnumber, UserLevel level)
         {
-            Username = GenerateUsername(level);
+            Identifier = GenerateIdentifier();
             Name = name;
             Sirname = sirname;
             Age = age;

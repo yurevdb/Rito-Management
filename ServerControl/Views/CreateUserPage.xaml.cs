@@ -5,9 +5,9 @@ namespace ServerControl
     /// <summary>
     /// Interaction logic for CreateUserPage.xaml
     /// </summary>
-    public partial class CreateUserPage : BasePage<CreateUserViewModel>
+    public partial class CreateUserUserControl : BasePage<CreateUserViewModel>
     {
-        public CreateUserPage()
+        public CreateUserUserControl()
         {
             InitializeComponent();
         }

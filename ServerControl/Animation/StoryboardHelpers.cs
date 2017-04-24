@@ -229,5 +229,30 @@ namespace ServerControl
             // Add the animation
             storyboard.Children.Add(animation);
         }
+
+        /// <summary>
+        /// Adds a rotation animation to a storyboard.
+        /// </summary>
+        /// <param name="storyboard">The storyboard to add the animation to</param>
+        /// <param name="seconds">How long should the animation take</param>
+        /// <param name="from">From what angle to start rotating</param>
+        /// <param name="to">To what angle to end the rotation</param>
+        public static void AddRotationToButton(this Storyboard storyboard, float seconds, double from, double to)
+        {
+            // Create the animation
+            var animation = new DoubleAnimation()
+            {
+                Duration = new Duration(TimeSpan.FromSeconds(seconds)),
+                DecelerationRatio = 0.9f,
+                From = from,
+                To = to,
+            };
+
+            // Set the target property name
+            Storyboard.SetTargetProperty(animation, new PropertyPath("(Button.RenderTransform).(RotateTransform.Angle)"));
+
+            // Add the animation
+            storyboard.Children.Add(animation);
+        }
     }
 }

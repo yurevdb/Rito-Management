@@ -27,11 +27,19 @@
 
         <!-- Overlay button -->
         <Grid Panel.ZIndex="99">
-            <Button Style="{StaticResource HoverButtonStyle}"
+            <Button Name="OverlayButton"
+                    Style="{StaticResource HoverButtonStyle}"
                     Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
                     Command="{Binding ShowNavigation}"
+                    local:RotateButton.Value="{Binding ApplicationViewModel.ShowNavigationMenu, Source={x:Static local:ViewModelLocator.Instance}}"
+                    CommandParameter="{Binding ElementName=OverlayButton}"
                     Visibility="{Binding ApplicationViewModel.IsLoggedIn, Source={x:Static local:ViewModelLocator.Instance}, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}"
-                    />
+                    RenderTransformOrigin="0.5,0.5"
+                    >
+                <Button.RenderTransform>
+                    <RotateTransform/>
+                </Button.RenderTransform>
+            </Button>
         </Grid>
         
         <!-- Main Content -->

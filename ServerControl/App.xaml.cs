@@ -22,9 +22,12 @@ namespace ServerControl
 
             // Create the main window
             Current.MainWindow = new MainWindow();
-
+            
             // Show the main window
             Current.MainWindow.Show();
+
+            // Denk er nog eens over na hoe je de window niet mag tonen tot de video achtergrond volledig is geladen
+
         }
     }
 }

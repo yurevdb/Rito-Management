@@ -3,6 +3,7 @@ using ServerControl.Core;
 using System;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace ServerControl
@@ -185,7 +186,7 @@ namespace ServerControl
                 IoC.Get<ApplicationViewModel>().CurrentPage = ApplicationPage.Plot;
             });
 
-            ShowNavigation = new RelayCommand(() => { 
+            ShowNavigation = new RelayParameterizedCommand((param) => { 
                 IoC.Get<ApplicationViewModel>().ShowNavigationMenu = IoC.Get<ApplicationViewModel>().ShowNavigationMenu ? false : true;
             });
 

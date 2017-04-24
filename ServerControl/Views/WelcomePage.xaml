@@ -18,7 +18,11 @@
             </Grid.RowDefinitions>
             
             <!-- Welcome Text-->
-            <TextBlock Margin="20 0 0 0" FontSize="70" Text="{Binding WelcomeText}" Foreground="White"/>
+            <TextBlock Margin="20 0 0 0" 
+                       FontSize="70" 
+                       Text="{Binding WelcomeText}" 
+                       Foreground="White"
+                       TextWrapping="Wrap"/>
             
             
         </Grid>

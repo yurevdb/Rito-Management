@@ -102,6 +102,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Animation\ButtonAnimations.cs" />
     <Compile Include="Controls\DisplayUsers\UserInfo\UserInfoControl.xaml.cs">
       <DependentUpon>UserInfoControl.xaml</DependentUpon>
     </Compile>
@@ -117,15 +118,16 @@
     <Compile Include="Controls\PageHost.xaml.cs">
       <DependentUpon>PageHost.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\Animation\FrameworkElementAnimations.cs" />
-    <Compile Include="Helpers\Animation\PageAnimation.cs" />
-    <Compile Include="Helpers\Animation\PageAnimations.cs" />
-    <Compile Include="Helpers\Animation\StoryboardHelpers.cs" />
-    <Compile Include="Helpers\Attached Properties\AnimateBaseProperty.cs" />
-    <Compile Include="Helpers\Attached Properties\BaseAttachedProperty.cs" />
-    <Compile Include="Helpers\Attached Properties\ButtonAttachedProperty.cs" />
-    <Compile Include="Helpers\Attached Properties\NoFrameHistory.cs" />
-    <Compile Include="Helpers\Attached Properties\PasswordBoxAttachedProperties.cs" />
+    <Compile Include="Animation\FrameworkElementAnimations.cs" />
+    <Compile Include="Animation\Page Animations\PageAnimation.cs" />
+    <Compile Include="Animation\Page Animations\PageAnimations.cs" />
+    <Compile Include="Animation\StoryboardHelpers.cs" />
+    <Compile Include="Attached Properties\AnimateBaseProperty.cs" />
+    <Compile Include="Attached Properties\BaseAttachedProperty.cs" />
+    <Compile Include="Attached Properties\ButtonAttachedProperty.cs" />
+    <Compile Include="Attached Properties\NoFrameHistory.cs" />
+    <Compile Include="Attached Properties\PasswordBoxAttachedProperties.cs" />
+    <Compile Include="Attached Properties\RotateButton.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>

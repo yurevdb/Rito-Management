@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media.Animation;
 
 namespace ServerControl
@@ -170,6 +169,29 @@ namespace ServerControl
 
             // Make page not visible
             element.Visibility = Visibility.Collapsed;
+        }
+
+        /// <summary>
+        /// Adds a rotation animation to a <see cref="FrameworkElement"/>
+        /// </summary>
+        /// <param name="element">The <see cref="FrameworkElement"/> to animate</param>
+        /// <param name="fromAngle">The angle to start the rotation from</param>
+        /// <param name="toAngle">The angle to end the rotation</param>
+        /// <param name="seconds">The time to rotation should take</param>
+        /// <returns></returns>
+        public static async Task RotateAsync(this FrameworkElement element, double fromAngle, double toAngle, float seconds = 0.5f)
+        {
+            // Create the storyboard
+            var sb = new Storyboard();
+
+            // Add the rotation to the storyboard
+            sb.AddRotationToButton(seconds, fromAngle, toAngle);
+
+            // Begin the animation
+            sb.Begin();
+
+            // Wait for it to finish
+            await Task.Delay((int)(seconds * 1000));
         }
     }
 }

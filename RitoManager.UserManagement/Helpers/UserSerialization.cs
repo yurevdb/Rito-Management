@@ -30,13 +30,34 @@ namespace RitoManager.UserManagement
         /// </summary>
         /// <param name="list">The list with the users</param>
         /// <returns></returns>
-        public static List<BaseUser> Deserialize(this List<BaseUser> list)
+        public static List<BaseUser> Deserialize()
         {
             using (FileStream fs = new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\RitoManager_Users.rmu", FileMode.Open, FileAccess.Read))
             {
                 List<BaseUser> users = bf.Deserialize(fs) as List<BaseUser>;
                 return users;
             }
+        }
+
+        /// <summary>
+        /// Gets the list of users and adds the given user to it and saves the list again
+        /// </summary>
+        /// <param name="user">The <see cref="User"/> to save</param>
+        public static void Save(this User user)
+        {
+            // Get the list of users
+            List<BaseUser> users = Deserialize();
+
+            // If the list does not exists yet
+            if (users == null)
+                // Create it
+                users = new List<BaseUser>();
+
+            // Add the given user to the list
+            users.Add(user);
+
+            // Save the list again
+            users.Serialize();
         }
     }
 }
