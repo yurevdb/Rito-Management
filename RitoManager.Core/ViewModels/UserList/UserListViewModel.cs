@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using RitoManager.UserManagement;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Windows.Input;
 
 namespace ServerControl.Core
@@ -23,6 +27,13 @@ namespace ServerControl.Core
         /// </summary>
         public UserListViewModel()
         {
+        }
+
+
+        private void GetUserList()
+        {
+            var items = new List<BaseUser>();
+            items = JsonConvert.DeserializeObject<List<BaseUser>>(File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RitoManager_Users.json"));
         }
 
     }

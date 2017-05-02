@@ -1,5 +1,5 @@
 ﻿<local:BasePage x:TypeArguments="core:CreateUserViewModel" 
-                x:Class="ServerControl.CreateUserUserControl"
+                x:Class="ServerControl.CreateUserPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -10,8 +10,12 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="CreateUserPage">
 
-    <Grid>
+    <StackPanel Background="Transparent" Margin="20">
         
-    </Grid>
+        <TextBox Text="{Binding Name}" Height="50" Margin="0 0 0 10"/>
+        <TextBox Text="{Binding Sirname}" Height="50" Margin="0 0 0 10"/>
+        <Button Content="Save" Command="{Binding Createuser}" Margin="0 0 0 10"/>
+        
+    </StackPanel>
     
 </local:BasePage>

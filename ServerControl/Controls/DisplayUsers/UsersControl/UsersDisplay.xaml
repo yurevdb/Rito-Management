@@ -15,27 +15,8 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0">
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            
-            <!-- Search box-->
-            <Border Grid.Row="0"
-                    Background="AliceBlue" 
-                    Height="80" 
-                    Padding="10"
-                    Margin="0 0 0 10"
-                    >
-
-                <TextBox />
-            </Border>
-
-            <!-- List with all the users -->
-            <local:UserListControl Grid.Row="1" Margin="0 10 0 0" />
-        </Grid>
+        <!-- List with all the users -->
+        <local:UserListControl Grid.Row="1" Margin="0" />
 
         <local:UserInfoControl Grid.Column="1" Margin="20 0 0 0"/>
 

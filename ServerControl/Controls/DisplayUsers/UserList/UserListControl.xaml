@@ -10,7 +10,7 @@
     
     <Grid DataContext="{x:Static core:UserListDesignModel.Instance}" Background="{StaticResource ForegroundLightBrush}">
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <!--<ScrollViewer VerticalScrollBarVisibility="Auto">
             <ItemsControl ItemsSource="{Binding Items}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -18,7 +18,20 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-        </ScrollViewer>
-        
+        </ScrollViewer>-->
+
+        <ListBox ItemsSource="{Binding Items}" 
+                 Style="{StaticResource ListBoxStyle}"
+                 ItemContainerStyle="{StaticResource ListBoxItemStyle}"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 ScrollViewer.CanContentScroll="False">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <local:UserListItemControl/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
     </Grid>
 </UserControl>

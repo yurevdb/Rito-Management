@@ -1,63 +1,53 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace RitoManager.UserManagement
 {
     public static class UserSerialization
     {
-
-        /// <summary>
-        /// <see cref="BinaryFormatter"/> for serialization
-        /// </summary>
-        private static BinaryFormatter bf = new BinaryFormatter();
-
-        /// <summary>
-        /// Extension method to serialize a list of baseusers
-        /// </summary>
-        /// <param name="list">The list to serialize</param>
-        public static void Serialize(this List<BaseUser> list)
-        {
-            using (FileStream fs = new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\RitoManager_Users.rmu", FileMode.OpenOrCreate, FileAccess.Write))
-            {
-                bf.Serialize(fs, list);
-            }
-        }
-
-        /// <summary>
-        /// Extension method to deserialize a list a baseusers
-        /// </summary>
-        /// <param name="list">The list with the users</param>
-        /// <returns></returns>
-        public static List<BaseUser> Deserialize()
-        {
-            using (FileStream fs = new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\RitoManager_Users.rmu", FileMode.Open, FileAccess.Read))
-            {
-                List<BaseUser> users = bf.Deserialize(fs) as List<BaseUser>;
-                return users;
-            }
-        }
-
         /// <summary>
         /// Gets the list of users and adds the given user to it and saves the list again
         /// </summary>
         /// <param name="user">The <see cref="User"/> to save</param>
         public static void Save(this User user)
         {
-            // Get the list of users
-            List<BaseUser> users = Deserialize();
+            // Create the list of users
+            var users = new List<BaseUser>();
 
-            // If the list does not exists yet
-            if (users == null)
-                // Create it
-                users = new List<BaseUser>();
+            // Get the path to the list of users
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RitoManager_Users.json";
 
+            // If the file does not exists...
+            if (!File.Exists(path))
+            // Create the file
+            {
+                FileStream fs = null;
+                try
+                {
+                    fs = File.Create(path);
+                }
+                finally
+                {
+                    if (fs != null)
+                        fs.Close();
+                }
+            }
+            // If the file does exists...
+            else
+                // Get the list of users
+                users = JsonConvert.DeserializeObject<List<BaseUser>>(File.ReadAllText(path));
+            
             // Add the given user to the list
             users.Add(user);
 
             // Save the list again
-            users.Serialize();
+            string json = JsonConvert.SerializeObject(users);
+            
+            // Write the json data to the file
+            File.WriteAllText(path, json);
+            
         }
     }
 }

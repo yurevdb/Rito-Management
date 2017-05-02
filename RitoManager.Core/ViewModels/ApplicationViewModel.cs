@@ -1,4 +1,5 @@
 ﻿using ServerControl.Core;
+using System;
 
 namespace RitoManager.Core
 {
@@ -31,5 +32,6 @@ namespace RitoManager.Core
         /// The status of the application
         /// </summary>
         public string StatusText { get; set; } = Status.Ready;
+        
     }
 }

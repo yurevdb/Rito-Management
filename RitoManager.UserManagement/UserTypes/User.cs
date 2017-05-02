@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace RitoManager.UserManagement
 {
@@ -9,11 +12,13 @@ namespace RitoManager.UserManagement
         /// <summary>
         /// The amount of money the user has
         /// </summary>
+        [JsonProperty("money")]
         public long Money { get; set; }
 
         /// <summary>
         /// A list of recent transactions
         /// </summary>
+        [JsonProperty("transactions")]
         public List<Transaction> Transactions { get; set; }
 
         #endregion
@@ -61,12 +66,7 @@ namespace RitoManager.UserManagement
         #endregion
 
         #region Constructor
-
-        /// <summary>
-        /// Default constructor of a <see cref="User"/>
-        /// </summary>
-        public User() { }
-
+        
         /// <summary>
         /// Specified constructor
         /// </summary>
@@ -75,14 +75,42 @@ namespace RitoManager.UserManagement
         /// <param name="age">Age of the user</param>
         /// <param name="accountnumber">Accountnumber of the user</param>
         /// <param name="level"><see cref="UserLevel"/> of the user, default <see cref="UserLevel.User"/></param>
-        public User(string name, string sirname, int age, int accountnumber, UserLevel level)
+        public User(string name, string sirname, int age, long accountnumber, UserLevel level)
         {
-            Identifier = GenerateIdentifier();
+            Identifier = GenerateIdentifier(); //GenerateIdentifier()
             Name = name;
             Sirname = sirname;
             Age = age;
             Accountnumber = accountnumber;
             Level = level;
+        }
+
+        #endregion
+
+        #region Helpers
+
+        public void SaveUser(User user)
+        {
+            var users = new List<BaseUser>();
+
+            // Get the list of users
+            users = JsonConvert.DeserializeObject<List<BaseUser>>(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\RitoManager_Users.json");
+
+            // Add the given user to the list
+            users.Add(user);
+
+            // Save the list again
+            string json = JsonConvert.SerializeObject(users);
+
+            if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\RitoManager_Users.json"))
+                File.Create(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\RitoManager_Users.json");
+
+            File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\RitoManager_Users.json", json);
+
+            using (StreamWriter sw = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\RitoManager_Users.json"))
+            {
+                sw.WriteLine(json);
+            }
         }
 
         #endregion

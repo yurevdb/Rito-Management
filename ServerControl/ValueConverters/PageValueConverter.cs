@@ -24,7 +24,7 @@ namespace ServerControl
                 case ApplicationPage.UserManagement:
                     return new UMPage();
                 case ApplicationPage.CreateUser:
-                    return new CreateUserUserControl();
+                    return new CreateUserPage();
                 case ApplicationPage.UserInfo:
                     return new DisplayUsersPage();
                 case ApplicationPage.Welcome:
