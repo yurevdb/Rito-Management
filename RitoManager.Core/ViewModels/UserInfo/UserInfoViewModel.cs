@@ -17,27 +17,27 @@ namespace RitoManager.Core
         /// <summary>
         /// Username of the selected user
         /// </summary>
-        public string UserName => (User == null) ? "" : User.Name + " " + User.Sirname;
+        public string UserName => (User == null) ? "No user selected" : User.Name + " " + User.Sirname;
 
         /// <summary>
         /// Age of the selected user
         /// </summary>
-        public string UserAge => (User == null) ? "" : User.Age.ToString();
+        public string UserAge => (User == null) ? "N/A" : User.Age.ToString();
 
         /// <summary>
         /// Info of the selected user
         /// </summary>
-        public string UserInfo => (User == null) ? "" : User.Info;
+        public string UserInfo => (User == null) ? "N/A" : User.Info;
 
         /// <summary>
         /// Access level of the selectd user
         /// </summary>
-        public string UserLevel => (User == null) ? "" : User.Level.ToString();
+        public string UserLevel => (User == null) ? "N/A" : User.Level.ToString();
 
         /// <summary>
         /// Identifier of the selected user
         /// </summary>
-        public string UserIdentifier => (User == null) ? "" : User.Identifier;
+        public string UserIdentifier => (User == null) ? "N/A" : User.Identifier;
         
         /// <summary>
         /// Command to delete a user

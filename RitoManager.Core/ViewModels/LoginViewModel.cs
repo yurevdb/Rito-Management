@@ -97,6 +97,7 @@ namespace ServerControl.Core
                     {
                         IoC.Get<ApplicationViewModel>().CurrentPage = ApplicationPage.Welcome;
                         IoC.Get<ApplicationViewModel>().IsLoggedIn = true;
+                        IoC.Get<ApplicationViewModel>().LoggedInUser = new Employee("admin", "admin", "admin", 0, "admin");
                         ErrorText = string.Empty;
                         return;
                     }

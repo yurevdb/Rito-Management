@@ -88,8 +88,10 @@ namespace ServerControl.Core
                 }
             });
             
-            // Select the first element in the list
-            Selected.Execute(Items.FirstOrDefault());
+            // If there is an element in items...
+            if(Items.Count > 0)
+                // Select the first element in the list
+                Selected.Execute(Items.FirstOrDefault());
         }
 
         #endregion
