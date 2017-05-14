@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using RitoManager.Core;
+using System.Windows.Controls;
 
 namespace ServerControl
 {
@@ -10,6 +11,9 @@ namespace ServerControl
         public UserInfoControl()
         {
             InitializeComponent();
+
+            UserInfoViewModel u = IoC.Get<UserInfoViewModel>();
+            DataContext = u;
         }
     }
 }

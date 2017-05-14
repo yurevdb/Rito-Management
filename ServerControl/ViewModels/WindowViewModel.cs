@@ -175,6 +175,7 @@ namespace ServerControl
             TitleCommand = new RelayCommand(() => 
             {
                 IoC.Get<ApplicationViewModel>().IsLoggedIn = false;
+                IoC.Get<ApplicationViewModel>().LoggedInUser = null;
                 IoC.Get<ApplicationViewModel>().CurrentPage = ApplicationPage.Login;
             });
 

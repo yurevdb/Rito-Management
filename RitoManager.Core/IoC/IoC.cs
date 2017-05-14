@@ -38,6 +38,8 @@ namespace RitoManager.Core
         {
             // Bind to a single instance of Application view model
             Kernel.Bind<ApplicationViewModel>().ToConstant(new ApplicationViewModel());
+
+            Kernel.Bind<UserInfoViewModel>().ToConstant(new UserInfoViewModel());
         }
 
         #endregion

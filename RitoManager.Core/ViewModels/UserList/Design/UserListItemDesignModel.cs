@@ -23,7 +23,6 @@
         {
             Initials = "YV";
             Name = "Yuré Vanderbruggen";
-            AccountNumber = "38349 98272 92883 98238 9";
             ImageColorBackground = "3099c5";
         }
 

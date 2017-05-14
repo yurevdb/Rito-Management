@@ -53,7 +53,7 @@ namespace TransmissionControl
         /// <summary>
         /// An event that fires when an error occurs.
         /// </summary>
-        public event EventHandler<ConnectionErrorEventArgs> ConnectionError;
+        //public event EventHandler<ConnectionErrorEventArgs> ConnectionError;
 
         /// <summary>
         /// An event that fires when data is received from a <see cref="SslStream"/>.

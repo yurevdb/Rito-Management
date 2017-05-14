@@ -26,18 +26,74 @@
         <Setter Property="Margin" Value="5 5 0 0"/>
     </Style>
 
-    <Style x:Key="LoginTextBox" TargetType="TextBox" BasedOn="{StaticResource BaseStyle}">
+    <Style TargetType="{x:Type TextBox}" x:Key="BaseTextBoxStyle" BasedOn="{StaticResource BaseStyle}">
         <Setter Property="Background" Value="{StaticResource BackgroundLightBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource AccentColor1}"/>
         <Setter Property="Padding" Value="5"/>
-        <Setter Property="Margin" Value=" 0 5 0 5" />
+        <Setter Property="Margin" Value="0" />
         <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}"/>
         <Setter Property="FontFamily" Value="{StaticResource RobotoRegular}"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Top"/>
+        <Setter Property="AcceptsReturn" Value="True"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="SelectionBrush" Value="{StaticResource HighlightAccentColor1}"/>
         <Setter Property="BorderThickness" Value="0 0 0 2"/>
         <Setter Property="Foreground" Value="{StaticResource DarkFontColor}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Grid>
+                        <Border x:Name="border" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                Background="{TemplateBinding Background}" 
+                                SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+
+                        <TextBlock x:Name="Placeholder"
+                                   IsHitTestVisible="False"
+                                   Text="{TemplateBinding Tag}"
+                                   FontFamily="{StaticResource RobotoLight}"
+                                   FontSize="{StaticResource FontSizeLarge}"
+                                   Padding="{TemplateBinding Padding}"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                   Foreground="{StaticResource DarkFontColor}">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+                    
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#FFa15072"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#FFa15072"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="LoginTextBox" TargetType="TextBox" BasedOn="{StaticResource BaseTextBoxStyle}">
+        <Setter Property="AcceptsReturn" Value="False"/>
+        <Setter Property="Margin" Value="0 5 0 5"/>
+        <Setter Property="TextWrapping" Value="NoWrap"/>
         <!-- Placeholder -->
         <Setter Property="Template">
             <Setter.Value>
@@ -71,7 +127,7 @@
                             </TextBlock.Style>
                         </TextBlock>
                     </Grid>
-                    <!-- Highlight and mouseover color changes -->
+                     <!--Highlight and mouseover color changes--> 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" TargetName="border" Value="0.56"/>
@@ -92,7 +148,7 @@
         <Setter Property="Background" Value="{StaticResource BackgroundLightBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource AccentColor1}"/>
         <Setter Property="Padding" Value="5"/>
-        <Setter Property="Margin" Value=" 0 5 0 5" />
+        <Setter Property="Margin" Value="0" />
         <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}"/>
         <Setter Property="FontFamily" Value="{StaticResource RobotoRegular}"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>

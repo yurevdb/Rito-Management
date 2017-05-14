@@ -56,7 +56,7 @@
                                         <BeginStoryboard>
                                             <Storyboard>
                                                 <!-- The MediaTimeline has a RepeatBehavior="Forever" which makes the media play over and over indefinitely.-->
-                                                <MediaTimeline Source="pack://siteoforigin:,,,/Resources/Blue_Particle_Motion_Background_1080.mp4"
+                                                <MediaTimeline Source="pack://siteoforigin:,,,/Resources/VideoBackground.mp4"
                                                            Storyboard.TargetName="myMediaElement"  
                                                            RepeatBehavior="Forever" />
                                             </Storyboard>
@@ -94,6 +94,7 @@
                         />
                 <Button Style="{StaticResource ButtonPageNavStyle}" Content="Server Statistics"
                         Command="{Binding ShowServerStats}"
+                        Visibility="{Binding ApplicationViewModel.LoggedInUser, Source={x:Static local:ViewModelLocator.Instance}, Converter={local:UserLevelToVisibilityConverter}}"
                         Width="180"
                         />
             </StackPanel>

@@ -1,4 +1,5 @@
 ﻿using RitoManager.Core;
+using RitoManager.UserManagement;
 using ServerControl.Core;
 using System;
 using System.Diagnostics;
@@ -13,6 +14,17 @@ namespace ServerControl
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            // Get the user that is currently logged in
+            BaseUser user = IoC.Get<ApplicationViewModel>().LoggedInUser;
+            
+            // Create the variable to hold the userlevel of the logged in user
+            UserLevel userlevel = UserLevel.User;
+
+            // If there is a user logged in...
+            if (user != null)
+                // get the access level of the user
+                userlevel = user.Level;
+
             //Find the appropriate page
             switch ((ApplicationPage)value)
             {
@@ -22,7 +34,10 @@ namespace ServerControl
                 case ApplicationPage.Plot:
                     return new PlotView();
                 case ApplicationPage.UserManagement:
-                    return new UMPage();
+                    if (userlevel == UserLevel.Employee)
+                        return new CreateUserPage();
+                    else
+                        return new UMPage();
                 case ApplicationPage.CreateUser:
                     return new CreateUserPage();
                 case ApplicationPage.UserInfo:

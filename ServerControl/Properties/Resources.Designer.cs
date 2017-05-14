@@ -61,22 +61,22 @@ namespace ServerControl.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] Blue_Particle_Motion_Background_1080 {
-            get {
-                object obj = ResourceManager.GetObject("Blue_Particle_Motion_Background_1080", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap RM_Background {
             get {
                 object obj = ResourceManager.GetObject("RM_Background", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VideoBackground {
+            get {
+                object obj = ResourceManager.GetObject("VideoBackground", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

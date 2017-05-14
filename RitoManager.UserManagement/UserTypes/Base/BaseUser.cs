@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using System;
+using System.Drawing;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -6,10 +8,14 @@ namespace RitoManager.UserManagement
 {
     public class BaseUser
     {
+        #region Private Variables
+
         /// <summary>
         /// Object to generate random unique characters
         /// </summary>
         RNGCryptoServiceProvider crypto = new RNGCryptoServiceProvider();
+
+        #endregion
 
         #region Public Properties
 
@@ -32,12 +38,6 @@ namespace RitoManager.UserManagement
         public string Sirname { get; set; }
 
         /// <summary>
-        /// Accountnumber of the user
-        /// </summary>
-        [JsonProperty("accountnumber")]
-        public long Accountnumber { get; set; }
-
-        /// <summary>
         /// Age of the user
         /// </summary>
         [JsonProperty("age")]
@@ -49,6 +49,24 @@ namespace RitoManager.UserManagement
         [JsonProperty("level")]
         public UserLevel Level { get; set; }
 
+        /// <summary>
+        /// The password of the user
+        /// </summary>
+        [JsonProperty("password")]
+        public string Password { get; set; }
+
+        /// <summary>
+        /// The color for the initials icon of the user
+        /// </summary>
+        [JsonProperty("backgroundcolor")]
+        public string BackgroundColor { get; set; }
+
+        /// <summary>
+        /// Info about the user
+        /// </summary>
+        [JsonProperty("info")]
+        public string Info { get; set; }
+
         #endregion
 
         #region Base Methods
@@ -57,7 +75,7 @@ namespace RitoManager.UserManagement
         /// Generates a unique username in the system 
         /// </summary>
         /// <returns></returns>
-        public string GenerateIdentifier()
+        protected void GenerateIdentifier()
         {
 
             int maxSize = 8;
@@ -76,7 +94,18 @@ namespace RitoManager.UserManagement
                 result.Append(chars[b % (chars.Length - 1)]);
             }
 
-            return $"{result.ToString()}";
+            Identifier = result.ToString();
+        }
+
+        /// <summary>
+        /// Generates a random color in string format for the user, this will serve as the background color of the initials icon for the user
+        /// </summary>
+        protected void GenerateBackgroundColor()
+        {
+            Random rng = new Random();
+            Color color = new Color();
+            color = Color.FromArgb(255, rng.Next(0, 256), rng.Next(0, 256), rng.Next(0, 256));
+            BackgroundColor = color.Name;
         }
 
         #endregion

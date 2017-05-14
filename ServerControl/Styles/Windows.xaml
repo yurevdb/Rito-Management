@@ -35,14 +35,14 @@
                         <Grid>
 
                             <!-- opacity mask for corners on grid -->
-                            <Border x:Name="Container" Background="{StaticResource BackgroundLightBrush}" CornerRadius="{Binding WindowCornerRadius, FallbackValue=10}">
+                            <Border x:Name="Container" Background="Black" CornerRadius="{Binding WindowCornerRadius, FallbackValue=10}">
                             </Border>
 
                             <!-- Window border and dropshadow -->
                             <Border CornerRadius="{Binding WindowCornerRadius, FallbackValue=10}"
-                                    Background="{Binding ForegroundLightBrush, FallbackValue=White}">
+                                    Background="Black">
                                 <Border.Effect>
-                                    <DropShadowEffect ShadowDepth="1" Opacity="0.3"/>
+                                    <DropShadowEffect ShadowDepth="3" Opacity="0.4" BlurRadius="5"/>
                                 </Border.Effect>
                             </Border>
 
@@ -81,12 +81,7 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <!-- Icon -->
-                                    <!--<Button Grid.Column="0" Style="{StaticResource SystemIconButton}" Command="{Binding MenuCommand}">
-                                        --><!--link to the logo--><!--
-                                        <Image Source="/Images/Logo/logo.ico" />
-                                    </Button>-->
-
+                                    
                                     <!-- Title Text -->
                                     <Viewbox  Grid.Column="0" Margin="0">
                                         <Button Style="{StaticResource WindowControlButton}" 

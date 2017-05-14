@@ -5,17 +5,71 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ServerControl"
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
       xmlns:core="clr-namespace:ServerControl.Core;assembly=RitoManager.Core"
       mc:Ignorable="d" 
+      x:Name="CUPage"
       d:DesignHeight="300" d:DesignWidth="300"
       Title="CreateUserPage">
 
-    <StackPanel Background="Transparent" Margin="20">
-        
-        <TextBox Text="{Binding Name}" Height="50" Margin="0 0 0 10"/>
-        <TextBox Text="{Binding Sirname}" Height="50" Margin="0 0 0 10"/>
-        <Button Content="Save" Command="{Binding Createuser}" Margin="0 0 0 10"/>
-        
-    </StackPanel>
+    <Grid Background="Transparent" Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            
+            <!-- Name and Sirname-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBox Grid.Column="0" Text="{Binding Name}" Style="{StaticResource LoginTextBox}" Margin="0 0 10 10" Tag="Name"/>
+                <TextBox Grid.Column="1" Text="{Binding Sirname}" Style="{StaticResource LoginTextBox}" Margin="0 0 0 10" Tag="Sirname"/>
+            </Grid>
+            
+            <!-- Password -->
+            <PasswordBox Name="tbxPassword"
+                         Margin="0 0 0 10"
+                         Tag="Password"
+                         HorizontalContentAlignment="Left"
+                         Style="{StaticResource LoginPasswordBox}"/>
+
+            <!-- Age -->
+            <TextBox Text="{Binding Age}" 
+                     Style="{StaticResource LoginTextBox}" 
+                     Margin="0 0 0 10" Tag="Age"
+                     />
+
+            <!-- Access level-->
+            <ComboBox ItemsSource="{Binding LevelItems}" 
+                      SelectedIndex="{Binding SelectedItem}" 
+                      Height="50" 
+                      Margin="0 0 0 10"
+                      FontFamily="{StaticResource RobotoRegular}"
+                      FontSize="{StaticResource FontSizeLarge}"/>
+        </StackPanel>
+
+        <!-- Save Button -->
+        <Button Content="Save"
+                Grid.Column="0"
+                VerticalAlignment="Bottom"
+                Style="{StaticResource NormalButtonStyle}"
+                Command="{Binding Createuser}" 
+                CommandParameter="{Binding ElementName=CUPage}"
+                />
+
+        <!-- Random info -->
+        <TextBox Grid.Column="1" 
+                 Margin="10 0 0 0" 
+                 Text="{Binding Info}"
+                 FontSize="{StaticResource FontSizeRegular}" 
+                 Style="{StaticResource BaseTextBoxStyle}" 
+                 Tag="Extra Info"/>
+
+    </Grid>
     
 </local:BasePage>

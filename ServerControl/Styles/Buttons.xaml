@@ -46,6 +46,24 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
+    <!-- Normal Button Style -->
+    <Style x:Key="NormalButtonStyle" TargetType="Button" BasedOn="{StaticResource BasicButton}">
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     
     <!-- UI button standard style -->
     <Style x:Key="ButtonStyle" TargetType="Button">

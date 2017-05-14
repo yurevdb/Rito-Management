@@ -35,6 +35,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,10 +46,11 @@
   <ItemGroup>
     <Compile Include="Helpers\UserSerialization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserTypes\Administrator.cs" />
     <Compile Include="UserTypes\Base\BaseUser.cs" />
-    <Compile Include="UserTypes\Base\Transaction.cs" />
     <Compile Include="UserTypes\Base\UserLevel.cs" />
-    <Compile Include="UserTypes\ExternUser.cs" />
+    <Compile Include="UserTypes\Employee.cs" />
+    <Compile Include="UserTypes\Manager.cs" />
     <Compile Include="UserTypes\User.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,10 @@
-﻿using RitoManager.Core;
+﻿using Newtonsoft.Json;
+using RitoManager.Core;
+using RitoManager.UserManagement;
+using System.Collections.Generic;
+using System.IO;
+using System.Security;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 
 namespace ServerControl.Core
@@ -46,6 +50,7 @@ namespace ServerControl.Core
         public LoginViewModel()
         {
             // Create Commands
+            // Taskception
             LoginCommand = new RelayParameterizedCommand(async (parameter) => await Login(parameter));
         }
 
@@ -72,22 +77,88 @@ namespace ServerControl.Core
                 bool res = await Task.Factory.StartNew<bool>(function);
                 if (res == true)
                 {
+                    // Bad but worked
                     WindowViewModel window = ((MainWindow)Application.Current.MainWindow).DataContext as WindowViewModel;
                     window.CurrentPage = ApplicationPage.App;
-                }
-                */
-                await Task.Delay(2000);
-                if(this.Username == "yure" && (parameter as IHavePassword).SecurePassword.Unsecure() == "hallo")
-                {
+
+                    // Good way, Injection of Control through ninject (dependency injection made easy)
                     IoC.Get<ApplicationViewModel>().CurrentPage = ApplicationPage.Welcome;
                     IoC.Get<ApplicationViewModel>().IsLoggedIn = true;
                     ErrorText = string.Empty;
                 }
-                else
+                */
+
+                //await Task.Delay(1);
+
+                await Task.Run(() => 
                 {
-                    ErrorText = Status.LoginError;
-                }
+                    // Testing protocol
+                    if (Username == "admin" && (parameter as IHavePassword).SecurePassword.Unsecure() == "admin")
+                    {
+                        IoC.Get<ApplicationViewModel>().CurrentPage = ApplicationPage.Welcome;
+                        IoC.Get<ApplicationViewModel>().IsLoggedIn = true;
+                        ErrorText = string.Empty;
+                        return;
+                    }
+
+                    // Check for actual users
+                    if (CheckUser(Username, (parameter as IHavePassword).SecurePassword))
+                    {
+                        IoC.Get<ApplicationViewModel>().CurrentPage = ApplicationPage.Welcome;
+                        IoC.Get<ApplicationViewModel>().IsLoggedIn = true;
+                        ErrorText = string.Empty;
+                    }
+                });
             });
+        }
+
+        #endregion
+
+        #region Helpers
+
+        /// <summary>
+        /// Gets the database of users and checks if the username is known to the system,
+        /// If the username is known then it will check if the password is correct,
+        /// When the credentials are correct it will return true, else it will return false.
+        /// </summary>
+        /// <param name="Username">The username of the user to log in</param>
+        /// <param name="Password">The password of the user to log in</param>
+        /// <returns></returns>
+        private bool CheckUser(string Username, SecureString Password)
+        {
+            // Value of correct user credentials
+            var value = false;
+            
+            // Get the list of users
+            var users = JsonConvert.DeserializeObject<List<BaseUser>>(File.ReadAllText(IoC.Get<ApplicationViewModel>().JsonPath));
+            
+            // Go through all the users
+            foreach(var baseuser in users)
+            {
+                // If the username exists...
+                if (baseuser.Name == Username)
+                    // A user that wants to log in must be at a higher access level that the standard user
+                    if (baseuser.Level > UserLevel.User)
+                        // Check if the password is correct...
+                        if (baseuser.Password == Password.Unsecure())
+                        {
+                            // Set true
+                            value = true;
+
+                            // Set the logged in user
+                            IoC.Get<ApplicationViewModel>().LoggedInUser = baseuser;
+                        }
+                        else
+                        {
+                            ErrorText = Status.LoginError;
+                            break;
+                        }
+                    else
+                        ErrorText = "You don't have the required access level.";
+            }
+
+            // Return the value
+            return value;
         }
 
         #endregion

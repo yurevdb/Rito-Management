@@ -55,7 +55,7 @@
                                                TextTrimming="CharacterEllipsis"
                                                />       
                                     <!-- Account Info -->
-                                    <TextBlock Text="{Binding AccountNumber}"
+                                    <TextBlock Text="{Binding SubText}"
                                                FontFamily="{StaticResource RobotoLight}"
                                                FontSize="{StaticResource FontSizeAverage}"
                                                Foreground="{StaticResource DarkFontColor}"

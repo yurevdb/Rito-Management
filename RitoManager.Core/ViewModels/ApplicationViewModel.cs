@@ -1,5 +1,7 @@
-﻿using ServerControl.Core;
+﻿using RitoManager.UserManagement;
+using ServerControl.Core;
 using System;
+using System.Collections.Generic;
 
 namespace RitoManager.Core
 {
@@ -32,6 +34,20 @@ namespace RitoManager.Core
         /// The status of the application
         /// </summary>
         public string StatusText { get; set; } = Status.Ready;
-        
+
+        /// <summary>
+        /// The path to the json file with all the users
+        /// </summary>
+        public string JsonPath => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Rito Manager\\RitoManager_Users.json";
+
+        /// <summary>
+        /// The list of users
+        /// </summary>
+        public List<UserListItemViewModel> UserList { get; set; } = new List<UserListItemViewModel>();
+
+        /// <summary>
+        /// The user that is currently logged in
+        /// </summary>
+        public BaseUser LoggedInUser { get; set; } = null;
     }
 }

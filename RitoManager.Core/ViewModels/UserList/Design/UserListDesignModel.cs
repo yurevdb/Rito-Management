@@ -29,7 +29,6 @@ namespace ServerControl.Core
                 {
                     Name = "Yuré Vanderbruggen",
                     Initials = "YV",
-                    AccountNumber = "2354 6547 1234 3456 8",
                     ImageColorBackground = "30995c",
                     IsSelected = true
                 },
@@ -37,21 +36,18 @@ namespace ServerControl.Core
                 {
                     Name = "Bard Bardus",
                     Initials = "BB",
-                    AccountNumber = "1234 5678 9012 3456 9",
                     ImageColorBackground = "00d309",
                 },
                 new UserListItemViewModel
                 {
                     Name = "Xayah the Rebel",
                     Initials = "XR",
-                    AccountNumber = "0987 6543 2109 8765 1",
                     ImageColorBackground = "ff3402",
                 },
                 new UserListItemViewModel
                 {
                     Name = "Yuré Vanderbruggen",
                     Initials = "YV",
-                    AccountNumber = "2354 6547 1234 3456 8",
                     ImageColorBackground = "30995c",
                     IsSelected = true
                 },
@@ -59,21 +55,18 @@ namespace ServerControl.Core
                 {
                     Name = "Bard Bardus",
                     Initials = "BB",
-                    AccountNumber = "1234 5678 9012 3456 9",
                     ImageColorBackground = "00d309",
                 },
                 new UserListItemViewModel
                 {
                     Name = "Xayah the Rebel",
                     Initials = "XR",
-                    AccountNumber = "0987 6543 2109 8765 1",
                     ImageColorBackground = "ff3402",
                 },
                 new UserListItemViewModel
                 {
                     Name = "Yuré Vanderbruggen",
                     Initials = "YV",
-                    AccountNumber = "2354 6547 1234 3456 8",
                     ImageColorBackground = "30995c",
                     IsSelected = true
                 },
@@ -81,14 +74,12 @@ namespace ServerControl.Core
                 {
                     Name = "Bard Bardus",
                     Initials = "BB",
-                    AccountNumber = "1234 5678 9012 3456 9",
                     ImageColorBackground = "00d309",
                 },
                 new UserListItemViewModel
                 {
                     Name = "Xayah the Rebel",
                     Initials = "XR",
-                    AccountNumber = "0987 6543 2109 8765 1",
                     ImageColorBackground = "ff3402",
                 },
             };

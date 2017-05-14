@@ -11,13 +11,13 @@ namespace RitoManager.UserManagement
         /// Gets the list of users and adds the given user to it and saves the list again
         /// </summary>
         /// <param name="user">The <see cref="User"/> to save</param>
-        public static void Save(this User user)
+        public static void Save(this BaseUser user)
         {
             // Create the list of users
             var users = new List<BaseUser>();
 
             // Get the path to the list of users
-            var path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RitoManager_Users.json";
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Rito Manager\\RitoManager_Users.json";
 
             // If the file does not exists...
             if (!File.Exists(path))
