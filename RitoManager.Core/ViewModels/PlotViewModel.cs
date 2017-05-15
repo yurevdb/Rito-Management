@@ -37,8 +37,8 @@ namespace ServerControl.Core
             CpuPlot = new BasePlotModel();
             CpuPlot.Title = "Cpu Usage";
             CpuPlot.IsLegendVisible = true;
-            CpuPlot.Axes.Add(new LinearAxis() { Minimum = 0, Maximum = 100, Position = AxisPosition.Left, IsZoomEnabled = false });
-            CpuPlot.Axes.Add(new LinearAxis() { TextColor = OxyColors.Transparent, Position = AxisPosition.Bottom, TickStyle = TickStyle.None, IsZoomEnabled = false });
+            CpuPlot.Axes.Add(new LinearAxis() { Minimum = 0, Maximum = 100, Position = AxisPosition.Left, IsZoomEnabled = false, IsPanEnabled = false });
+            CpuPlot.Axes.Add(new LinearAxis() { TextColor = OxyColors.Transparent, Position = AxisPosition.Bottom, TickStyle = TickStyle.None, IsZoomEnabled = false, IsPanEnabled = false });
             LineSeries lsc = new LineSeries();
             lsc.Color = OxyColors.DodgerBlue;
             lsc.Title = "% CPU Usage";
@@ -48,8 +48,8 @@ namespace ServerControl.Core
             RamPlot = new BasePlotModel();
             RamPlot.Title = "Ram Usage";
             RamPlot.IsLegendVisible = true;
-            RamPlot.Axes.Add(new LinearAxis() { Minimum = 0, Maximum = 100, Position = AxisPosition.Left, IsZoomEnabled = false });
-            RamPlot.Axes.Add(new LinearAxis() { TextColor = OxyColors.Transparent, Position = AxisPosition.Bottom, TickStyle = TickStyle.None, IsZoomEnabled = false });
+            RamPlot.Axes.Add(new LinearAxis() { Minimum = 0, Maximum = 100, Position = AxisPosition.Left, IsZoomEnabled = false, IsPanEnabled = false });
+            RamPlot.Axes.Add(new LinearAxis() { TextColor = OxyColors.Transparent, Position = AxisPosition.Bottom, TickStyle = TickStyle.None, IsZoomEnabled = false, IsPanEnabled = false });
             LineSeries lsr = new LineSeries();
             lsr.Title = "% RAM Usage";
             lsr.Color = OxyColors.MediumPurple;
@@ -59,8 +59,8 @@ namespace ServerControl.Core
             NetPlot = new BasePlotModel();
             NetPlot.Title = "Network Usage";
             NetPlot.IsLegendVisible = true;
-            NetPlot.Axes.Add(new LinearAxis() { MinimumRange = 50, AbsoluteMinimum = 0, Position = AxisPosition.Left, IsZoomEnabled = false });
-            NetPlot.Axes.Add(new LinearAxis() { TextColor = OxyColors.Transparent, Position = AxisPosition.Bottom, TickStyle = TickStyle.None, IsZoomEnabled = false });
+            NetPlot.Axes.Add(new LinearAxis() { MinimumRange = 50, AbsoluteMinimum = 0, Position = AxisPosition.Left, IsZoomEnabled = false, IsPanEnabled = false });
+            NetPlot.Axes.Add(new LinearAxis() { TextColor = OxyColors.Transparent, Position = AxisPosition.Bottom, TickStyle = TickStyle.None, IsZoomEnabled = false, IsPanEnabled = false });
             LineSeries ls_sent = new LineSeries();
             LineSeries ls_recv = new LineSeries();
             ls_sent.Color = OxyColors.OrangeRed;
