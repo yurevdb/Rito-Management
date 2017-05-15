@@ -13,7 +13,7 @@ namespace RitoManager.UserManagement
         /// <summary>
         /// Object to generate random unique characters
         /// </summary>
-        RNGCryptoServiceProvider crypto = new RNGCryptoServiceProvider();
+        private static RNGCryptoServiceProvider crypto = new RNGCryptoServiceProvider();
 
         #endregion
 
@@ -75,12 +75,27 @@ namespace RitoManager.UserManagement
         /// Generates a unique username in the system 
         /// </summary>
         /// <returns></returns>
-        protected void GenerateIdentifier()
+        public static string GenerateIdentifier(string Userlevel)
         {
+            string level = null;
 
-            int maxSize = 8;
+            switch (Userlevel)
+            {
+                case "0": level = "u";
+                    break;
+                case "1": level = "e";
+                    break;
+                case "2": level = "m";
+                    break;
+                case "3": level = "a";
+                    break;
+                default:
+                    break;
+            }
+
+            int maxSize = 7;
             char[] chars = new char[62];
-            string a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            string a = "1234567890";
             chars = a.ToCharArray();
             int size = maxSize;
             byte[] data = new byte[1];
@@ -94,7 +109,7 @@ namespace RitoManager.UserManagement
                 result.Append(chars[b % (chars.Length - 1)]);
             }
 
-            Identifier = result.ToString();
+            return $"{level}{result}";
         }
 
         /// <summary>

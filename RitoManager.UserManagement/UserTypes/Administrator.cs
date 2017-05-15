@@ -12,7 +12,7 @@
         /// <param name="age">Age of the Administrator</param>
         /// <param name="level"><see cref="UserLevel"/> of the user, default <see cref="UserLevel.User"/></param>
         /// <param name="info">Extra info about the user</param>
-        public Administrator(string name, string sirname, string password, int age, string info)
+        public Administrator(string name, string sirname, string password, int age, string info, string identifier)
         {
             Name = name;
             Sirname = sirname;
@@ -20,8 +20,8 @@
             Age = age;
             Level = UserLevel.Administrator;
             Info = info;
+            Identifier = identifier;
 
-            GenerateIdentifier();
             GenerateBackgroundColor();
         }
 

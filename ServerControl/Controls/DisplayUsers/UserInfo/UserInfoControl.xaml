@@ -111,7 +111,8 @@
                 Grid.Row="2"
                 Grid.ColumnSpan="2"
                 Command="{Binding DeleteUser}" 
-                Style="{StaticResource NormalButtonStyle}"/>
+                Style="{StaticResource NormalButtonStyle}"
+                ToolTip="If you press delete, do not be afraid. This actually deletes the user, but the view won't update because of magic."/>
 
     </Grid>
 </UserControl>

@@ -97,7 +97,7 @@ namespace ServerControl.Core
                     {
                         IoC.Get<ApplicationViewModel>().CurrentPage = ApplicationPage.Welcome;
                         IoC.Get<ApplicationViewModel>().IsLoggedIn = true;
-                        IoC.Get<ApplicationViewModel>().LoggedInUser = new Employee("admin", "admin", "admin", 0, "admin");
+                        IoC.Get<ApplicationViewModel>().LoggedInUser = new Employee("admin", "admin", "admin", 0, "admin", "admin");
                         ErrorText = string.Empty;
                         return;
                     }
@@ -109,6 +109,8 @@ namespace ServerControl.Core
                         IoC.Get<ApplicationViewModel>().IsLoggedIn = true;
                         ErrorText = string.Empty;
                     }
+                    else
+                        ErrorText = Status.LoginError;
                 });
             });
         }
@@ -137,7 +139,7 @@ namespace ServerControl.Core
             foreach(var baseuser in users)
             {
                 // If the username exists...
-                if (baseuser.Name == Username)
+                if (baseuser.Identifier == Username)
                     // A user that wants to log in must be at a higher access level that the standard user
                     if (baseuser.Level > UserLevel.User)
                         // Check if the password is correct...
@@ -155,7 +157,10 @@ namespace ServerControl.Core
                             break;
                         }
                     else
+                    {
                         ErrorText = "You don't have the required access level.";
+                        break;
+                    }
             }
 
             // Return the value

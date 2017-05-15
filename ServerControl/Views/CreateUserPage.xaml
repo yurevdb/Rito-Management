@@ -50,7 +50,20 @@
                       Height="50" 
                       Margin="0 0 0 10"
                       FontFamily="{StaticResource RobotoRegular}"
-                      FontSize="{StaticResource FontSizeLarge}"/>
+                      FontSize="{StaticResource FontSizeLarge}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ComboBox>
+
+            <!-- Identifier -->
+            <TextBox Text="{Binding Identifier}"
+                     IsReadOnly="True"
+                     Style="{StaticResource LoginTextBox}" 
+                     Margin="0 0 0 10" Tag="Identifier"
+                     />
         </StackPanel>
 
         <!-- Save Button -->

@@ -1,6 +1,7 @@
 ﻿using RitoManager.UserManagement;
 using System;
 using System.Security;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace ServerControl.Core
@@ -13,6 +14,11 @@ namespace ServerControl.Core
         /// The command to create a user
         /// </summary>
         public ICommand Createuser { get; set; }
+
+        /// <summary>
+        /// The command to show the identifier
+        /// </summary>
+        public ICommand SelectionChangedCommand { get; set; }
 
         #endregion
 
@@ -27,6 +33,11 @@ namespace ServerControl.Core
         /// Sirname of the user to create
         /// </summary>
         public string Sirname { get; set; }
+
+        /// <summary>
+        /// Identifier of the user to create
+        /// </summary>
+        public string Identifier { get; set; }
 
         /// <summary>
         /// Age of the user to create
@@ -62,40 +73,45 @@ namespace ServerControl.Core
         /// </summary>
         public CreateUserViewModel()
         {
-            Createuser = new RelayParameterizedCommand((param) =>
+            Createuser = new RelayParameterizedCommand(async (param) => await Task.Run(() =>
+                {
+                    BaseUser u = null;
+                    int age = 0;
+
+                    try
+                    {
+                        age = int.Parse(Age);
+                    }
+                    catch
+                    {
+                        age = -1;
+                    }
+
+                    switch (SelectedItem)
+                    {
+                        case "0":
+                            u = new User(Name, Sirname, (param as IHavePassword).SecurePassword.Unsecure(), age, Info, Identifier);
+                            break;
+                        case "1":
+                            u = new Employee(Name, Sirname, (param as IHavePassword).SecurePassword.Unsecure(), age, Info, Identifier);
+                            break;
+                        case "2":
+                            u = new Manager(Name, Sirname, (param as IHavePassword).SecurePassword.Unsecure(), age, Info, Identifier);
+                            break;
+                        case "3":
+                            u = new Administrator(Name, Sirname, (param as IHavePassword).SecurePassword.Unsecure(), age, Info, Identifier);
+                            break;
+                        default:
+                            break;
+                    }
+
+                    u.Save();
+                    Reset();
+                }));
+
+            SelectionChangedCommand = new RelayCommand(() => 
             {
-                BaseUser u = null;
-                int age = 0;
-
-                try
-                {
-                    age = int.Parse(Age);
-                }
-                catch
-                {
-                    age = -1;
-                }
-
-                switch (SelectedItem )
-                {
-                    case "0":
-                        u = new User(Name, Sirname, (param as IHavePassword).SecurePassword.Unsecure(), age, Info);
-                        break;
-                    case "1":
-                        u = new Employee(Name, Sirname, (param as IHavePassword).SecurePassword.Unsecure(), age, Info);
-                        break;
-                    case "2":
-                        u = new Manager(Name, Sirname, (param as IHavePassword).SecurePassword.Unsecure(), age, Info);
-                        break;
-                    case "3":
-                        u = new Administrator(Name, Sirname, (param as IHavePassword).SecurePassword.Unsecure(), age, Info);
-                        break;
-                    default:
-                        break;
-                }
-
-                u.Save();
-                Reset();
+                Identifier = BaseUser.GenerateIdentifier(SelectedItem);
             });
         }
 
