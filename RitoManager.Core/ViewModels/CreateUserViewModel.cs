@@ -33,12 +33,7 @@ namespace ServerControl.Core
         /// Sirname of the user to create
         /// </summary>
         public string Sirname { get; set; }
-
-        /// <summary>
-        /// Identifier of the user to create
-        /// </summary>
-        public string Identifier { get; set; }
-
+        
         /// <summary>
         /// Age of the user to create
         /// </summary>
@@ -63,6 +58,11 @@ namespace ServerControl.Core
         /// The Selected userlevel for the new user
         /// </summary>
         public string SelectedItem { get; set; } = "0";
+
+        /// <summary>
+        /// Identifier of the user to create
+        /// </summary>
+        public string Identifier { get; set; }
 
         #endregion
 
@@ -113,6 +113,8 @@ namespace ServerControl.Core
             {
                 Identifier = BaseUser.GenerateIdentifier(SelectedItem);
             });
+
+            Identifier = BaseUser.GenerateIdentifier(SelectedItem);
         }
 
         #endregion
